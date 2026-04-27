@@ -1,0 +1,45 @@
+---
+export interface Props {
+  title: string;
+  href: string;
+  description?: string;
+  date?: Date;
+  category?: string;
+  image?: string;
+}
+
+const { title, href, description, date, category, image } = Astro.props;
+---
+
+<article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+  <a href={href} class="block">
+    {image && (
+      <div class="aspect-[16/10] overflow-hidden bg-gray-100">
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+    )}
+    <div class="p-5">
+      {category && (
+        <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2.5 py-1 rounded-full mb-3">
+          {category}
+        </span>
+      )}
+      <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-2 mb-2">
+        {title}
+      </h3>
+      {description && (
+        <p class="text-sm text-gray-500 line-clamp-2">{description}</p>
+      )}
+      {date && (
+        <time class="block mt-3 text-xs text-gray-400" datetime={date.toISOString()}>
+          {date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+      )}
+    </div>
+  </a>
+</article>

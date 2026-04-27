@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+---
+
+<BaseLayout
+  title="关于我们"
+  description="了解 LifeTips — 我们致力于分享实用生活妙招，帮助你提升生活品质。"
+>
+  <Breadcrumb items={[
+    { label: '首页', href: '/' },
+    { label: '关于', href: '/about/' },
+  ]} />
+
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">关于 LifeTips</h1>
+
+    <div class="prose prose-lg">
+      <p>
+        LifeTips 是一个专注于分享实用生活妙招的平台。我们相信，生活中的每一个小细节都值得被关注，每一个小技巧都能带来大改变。
+      </p>
+
+      <h2>我们的使命</h2>
+      <p>
+        帮助每一位读者发现更轻松、更高效、更美好的生活方式。无论是家居收纳、健康养生，还是美食烹饪，我们都力求提供经过验证的实用内容。
+      </p>
+
+      <h2>内容原则</h2>
+      <ul>
+        <li><strong>实用性优先</strong> — 每篇文章都包含可以直接应用的建议</li>
+        <li><strong>内容原创</strong> — 我们的内容基于真实经验和专业研究</li>
+        <li><strong>通俗易懂</strong> — 用简单的语言解释复杂的方法</li>
+        <li><strong>持续更新</strong> — 不断为你带来最新鲜的生活灵感</li>
+      </ul>
+
+      <h2>内容分类</h2>
+      <p>我们目前涵盖以下几个领域：</p>
+      <ul>
+        <li><a href="/category/生活妙招/">生活妙招</a> — 日常生活中你可能不知道的聪明做法</li>
+        <li><a href="/category/健康养生/">健康养生</a> — 科学养生，远离伪健康知识</li>
+        <li><a href="/category/家居收纳/">家居收纳</a> — 让你的家更整洁、更有条理</li>
+        <li><a href="/category/美食烹饪/">美食烹饪</a> — 简单易做的美味食谱和烹饪技巧</li>
+      </ul>
+
+      <h2>联系我们</h2>
+      <p>
+        如果你有任何问题、建议或合作意向，欢迎通过以下方式联系我们：
+      </p>
+      <p>
+        📧 邮箱：contact@lifetips.example.com
+      </p>
+    </div>
+  </div>
+</BaseLayout>

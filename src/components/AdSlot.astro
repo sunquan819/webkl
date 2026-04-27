@@ -1,0 +1,24 @@
+---
+export interface Props {
+  slot: 'top-banner' | 'in-article' | 'sidebar' | 'bottom-banner';
+  className?: string;
+}
+
+const { slot, className = '' } = Astro.props;
+
+const adStyles: Record<string, string> = {
+  'top-banner': 'w-full min-h-[90px] flex items-center justify-center',
+  'in-article': 'w-full max-w-[300px] min-h-[250px] mx-auto my-6',
+  'sidebar': 'w-full max-w-[300px] min-h-[250px]',
+  'bottom-banner': 'w-full min-h-[90px] flex items-center justify-center',
+};
+---
+
+<div class={`ad-container bg-gray-50/50 border border-gray-100 rounded-lg overflow-hidden ${adStyles[slot]} ${className}`}>
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+    data-ad-slot={slot}
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+</div>

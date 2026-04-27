@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const latestPosts = allPosts.slice(0, 6);
+
+const categories = [...new Set(allPosts.map(post => post.data.category))];
+
+const categoryPosts = categories.map(cat => ({
+  name: cat,
+  posts: allPosts.filter(p => p.data.category === cat).slice(0, 3),
+}));
+---
+
+<BaseLayout
+  title="LifeTips - 生活妙招与品质生活指南"
+  description="发现实用生活妙招，涵盖家居收纳、健康养生、美食烹饪等话题，让你的生活更加便捷美好。"
+>
+  <section class="text-center py-12 md:py-20">
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+      让生活更美好的<br />
+      <span class="text-primary">实用妙招</span>
+    </h1>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-8">
+      从家居收纳到健康养生，从美食烹饪到生活智慧，每一天都能找到让生活更轻松的小技巧。
+    </p>
+    <div class="flex justify-center gap-4">
+      <a href="/blog/" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors">
+        浏览全部文章
+      </a>
+      <a href="/about/" class="border border-gray-200 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-white transition-colors">
+        了解更多
+      </a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl font-bold text-gray-900">最新文章</h2>
+      <a href="/blog/" class="text-sm text-primary hover:underline">查看全部 →</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {latestPosts.map(post => (
+        <PostCard
+          title={post.data.title}
+          href={`/blog/${post.id}/`}
+          description={post.data.description}
+          date={post.data.pubDate}
+          category={post.data.category}
+          image={post.data.heroImage}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8">探索分类</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {categoryPosts.map(({ name, posts }) => (
+        <div class="bg-white rounded-xl p-6 border border-gray-100">
+          <h3 class="font-bold text-gray-900 mb-4">
+            <a href={`/category/${name}/`} class="hover:text-primary transition-colors">{name}</a>
+          </h3>
+          <ul class="space-y-2">
+            {posts.map(post => (
+              <li>
+                <a href={`/blog/${post.id}/`} class="text-sm text-gray-500 hover:text-primary transition-colors line-clamp-1">
+                  {post.data.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-white rounded-xl p-8 md:p-12 text-center border border-gray-100">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">每周获取生活灵感</h2>
+    <p class="text-gray-500 mb-6">订阅我们，第一时间获取最新生活妙招和实用技巧。</p>
+    <form class="flex gap-3 max-w-md mx-auto" onsubmit="return false;">
+      <input
+        type="email"
+        placeholder="输入你的邮箱地址"
+        class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-primary text-sm"
+      />
+      <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors text-sm whitespace-nowrap">
+        订阅
+      </button>
+    </form>
+  </section>
+</BaseLayout>

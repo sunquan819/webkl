@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-gray-800 font-sans;
+}
+
+::selection {
+  @apply bg-primary/20;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  @apply font-bold text-gray-900;
+}
+
+.prose a {
+  @apply text-primary underline decoration-primary/30 hover:decoration-primary transition-colors;
+}
+
+.prose img {
+  @apply rounded-lg shadow-md;
+}
