@@ -5,7 +5,7 @@ pubDate: 2026-05-02
 category: "人工智能"
 tags: ["写作", "Claude", "AI写作", "内容创作"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1455390582262-4a90abde916b?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop"
 ---
 
 我不是专业写手。以前写东西挺痛苦，一篇1000字的文章要磨好几个小时。

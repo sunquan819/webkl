@@ -72,8 +72,8 @@ const blogDe = defineCollection({
 
 export const collections = {
   blog,
-  'en/blog': blogEn,
-  'ja/blog': blogJa,
-  'ko/blog': blogKo,
-  'de/blog': blogDe,
+  'blog-en': blogEn,
+  'blog-ja': blogJa,
+  'blog-ko': blogKo,
+  'blog-de': blogDe,
 };

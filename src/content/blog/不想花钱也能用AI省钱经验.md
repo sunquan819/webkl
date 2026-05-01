@@ -5,7 +5,7 @@ pubDate: 2026-05-01
 category: "人工智能"
 tags: ["免费", "省钱", "AI", "白嫖"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1633356122544-f134324a5cee?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&h=400&fit=crop"
 ---
 
 很多人问过我：用AI是不是很贵？

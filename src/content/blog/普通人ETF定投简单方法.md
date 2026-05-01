@@ -5,7 +5,7 @@ pubDate: 2026-05-02
 category: "财经投资"
 tags: ["定投", "ETF", "投资方法", "简单策略"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1461897104056-375580756ed9?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=400&fit=crop"
 ---
 
 定投ETF是最简单的投资方式，也是最适合普通人的方式。

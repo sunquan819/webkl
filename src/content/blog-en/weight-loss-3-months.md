@@ -5,7 +5,7 @@ pubDate: 2026-05-03
 category: "Health"
 tags: ["weight loss", "diet", "health", "fitness"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1490645935967-10de6ba93089?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=400&fit=crop"
 ---
 
 Weight loss has been something I struggled with for years.

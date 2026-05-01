@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostCard from '../../../components/PostCard.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import { url } from '../../../utils/url';
+import { getCollection } from 'astro:content';
+
+const allPosts = (await getCollection('blog-ko')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const categories = [...new Set(allPosts.map(post => post.data.category))];
+---
+
+<BaseLayout
+  title="모든 글 - LifeTips"
+  description="AI, 금융, 건강, 여행 등 실용적인 라이프핵 글을 모두 확인하세요."
+>
+  <Breadcrumb items={[
+    { label: '홈', href: '/ko/' },
+    { label: '모든 글', href: '/ko/blog/' },
+  ]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4">모든 글</h1>
+  <p class="text-gray-500 mb-8">실용적인 라이프핵과 가이드</p>
+
+  {categories.length > 0 && (
+    <div class="flex flex-wrap gap-2 mb-8">
+      <a href={url('/ko/blog/')} class="px-4 py-2 rounded-full text-sm font-medium bg-primary text-white">모두</a>
+      {categories.map(cat => (
+        <a href={url(`/ko/category/${cat}/`)} class="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {cat}
+        </a>
+      ))}
+    </div>
+  )}
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {allPosts.map(post => (
+      <PostCard
+        title={post.data.title}
+        href={url(`/ko/blog/${post.id}/`)}
+        description={post.data.description}
+        date={post.data.pubDate}
+        category={post.data.category}
+        image={post.data.heroImage}
+      />
+    ))}
+  </div>
+</BaseLayout>
