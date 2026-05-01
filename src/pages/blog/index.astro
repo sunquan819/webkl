@@ -13,20 +13,20 @@ const categories = [...new Set(allPosts.map(post => post.data.category))];
 ---
 
 <BaseLayout
-  title="全部文章"
-  description="浏览 LifeTips 所有生活妙招文章，涵盖家居收纳、健康养生、美食烹饪等话题。"
+  title="All Posts - LifeTips"
+  description="Browse all practical guides on AI, finance, health, travel, and everyday life tips."
 >
   <Breadcrumb items={[
-    { label: '首页', href: '/' },
-    { label: '全部文章', href: '/blog/' },
+    { label: 'Home', href: '/' },
+    { label: 'All Posts', href: '/blog/' },
   ]} />
 
-  <h1 class="text-3xl font-bold text-gray-900 mb-4">全部文章</h1>
-  <p class="text-gray-500 mb-8">发现实用的生活妙招和品质生活灵感</p>
+  <h1 class="text-3xl font-bold text-gray-900 mb-4">All Posts</h1>
+  <p class="text-gray-500 mb-8">Practical guides that actually work</p>
 
   {categories.length > 0 && (
     <div class="flex flex-wrap gap-2 mb-8">
-      <a href={url('/blog/')} class="px-4 py-2 rounded-full text-sm font-medium bg-primary text-white">全部</a>
+      <a href={url('/blog/')} class="px-4 py-2 rounded-full text-sm font-medium bg-primary text-white">All</a>
       {categories.map(cat => (
         <a href={url(`/category/${cat}/`)} class="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
           {cat}
