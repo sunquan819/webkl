@@ -1,19 +1,21 @@
 ---
+import { url, BASE_PATH } from '../utils/url';
+
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { href: '/', label: '首页' },
-  { href: '/blog/', label: '全部文章' },
-  { href: '/category/生活妙招/', label: '生活妙招' },
-  { href: '/category/健康养生/', label: '健康养生' },
-  { href: '/category/家居收纳/', label: '家居收纳' },
-  { href: '/about/', label: '关于' },
+  { href: url('/'), label: '首页' },
+  { href: url('/blog/'), label: '全部文章' },
+  { href: url('/category/生活妙招/'), label: '生活妙招' },
+  { href: url('/category/健康养生/'), label: '健康养生' },
+  { href: url('/category/家居收纳/'), label: '家居收纳' },
+  { href: url('/about/'), label: '关于' },
 ];
 ---
 
 <header class="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
   <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+    <a href={url('/')} class="flex items-center gap-2 hover:opacity-80 transition-opacity">
       <span class="text-2xl">🌿</span>
       <span class="text-xl font-bold text-primary">LifeTips</span>
     </a>
@@ -31,7 +33,7 @@ const navLinks = [
             href={link.href}
             class:list={[
               'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
-              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+              currentPath === link.href || (link.href !== url('/') && currentPath.startsWith(link.href))
                 ? 'bg-primary/10 text-primary'
                 : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
             ]}
@@ -51,7 +53,7 @@ const navLinks = [
             href={link.href}
             class:list={[
               'block px-3 py-2 rounded-lg text-sm font-medium transition-colors',
-              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+              currentPath === link.href || (link.href !== url('/') && currentPath.startsWith(link.href))
                 ? 'bg-primary/10 text-primary'
                 : 'text-gray-600 hover:bg-gray-50'
             ]}

@@ -1,4 +1,5 @@
 ---
+import { url } from '../utils/url';
 const year = new Date().getFullYear();
 ---
 
@@ -18,18 +19,18 @@ const year = new Date().getFullYear();
       <div>
         <h3 class="text-white font-semibold mb-4">热门分类</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="/category/生活妙招/" class="hover:text-white transition-colors">生活妙招</a></li>
-          <li><a href="/category/健康养生/" class="hover:text-white transition-colors">健康养生</a></li>
-          <li><a href="/category/家居收纳/" class="hover:text-white transition-colors">家居收纳</a></li>
-          <li><a href="/category/美食烹饪/" class="hover:text-white transition-colors">美食烹饪</a></li>
+          <li><a href={url('/category/生活妙招/')} class="hover:text-white transition-colors">生活妙招</a></li>
+          <li><a href={url('/category/健康养生/')} class="hover:text-white transition-colors">健康养生</a></li>
+          <li><a href={url('/category/家居收纳/')} class="hover:text-white transition-colors">家居收纳</a></li>
+          <li><a href={url('/category/美食烹饪/')} class="hover:text-white transition-colors">美食烹饪</a></li>
         </ul>
       </div>
 
       <div>
         <h3 class="text-white font-semibold mb-4">关于我们</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="/about/" class="hover:text-white transition-colors">关于 LifeTips</a></li>
-          <li><a href="/blog/" class="hover:text-white transition-colors">全部文章</a></li>
+          <li><a href={url('/about/')} class="hover:text-white transition-colors">关于 LifeTips</a></li>
+          <li><a href={url('/blog/')} class="hover:text-white transition-colors">全部文章</a></li>
         </ul>
       </div>
     </div>

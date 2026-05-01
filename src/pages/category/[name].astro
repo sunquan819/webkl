@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { url } from '../../utils/url';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -39,7 +40,7 @@ const { category, posts } = Astro.props;
     {posts.map(post => (
       <PostCard
         title={post.data.title}
-        href={`/blog/${post.id}/`}
+        href={url(`/blog/${post.id}/`)}
         description={post.data.description}
         date={post.data.pubDate}
         category={post.data.category}

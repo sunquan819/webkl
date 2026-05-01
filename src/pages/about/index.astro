@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { url } from '../../utils/url';
 ---
 
 <BaseLayout
@@ -36,10 +37,10 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
       <h2>内容分类</h2>
       <p>我们目前涵盖以下几个领域：</p>
       <ul>
-        <li><a href="/category/生活妙招/">生活妙招</a> — 日常生活中你可能不知道的聪明做法</li>
-        <li><a href="/category/健康养生/">健康养生</a> — 科学养生，远离伪健康知识</li>
-        <li><a href="/category/家居收纳/">家居收纳</a> — 让你的家更整洁、更有条理</li>
-        <li><a href="/category/美食烹饪/">美食烹饪</a> — 简单易做的美味食谱和烹饪技巧</li>
+        <li><a href={url('/category/生活妙招/')}>生活妙招</a> — 日常生活中你可能不知道的聪明做法</li>
+        <li><a href={url('/category/健康养生/')}>健康养生</a> — 科学养生，远离伪健康知识</li>
+        <li><a href={url('/category/家居收纳/')}>家居收纳</a> — 让你的家更整洁、更有条理</li>
+        <li><a href={url('/category/美食烹饪/')}>美食烹饪</a> — 简单易做的美味食谱和烹饪技巧</li>
       </ul>
 
       <h2>联系我们</h2>

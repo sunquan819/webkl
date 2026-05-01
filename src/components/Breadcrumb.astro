@@ -1,4 +1,6 @@
 ---
+import { url } from '../utils/url';
+
 export interface Props {
   items: { label: string; href: string }[];
 }
@@ -15,14 +17,16 @@ const jsonLd = {
     "item": new URL(item.href, Astro.site),
   })),
 };
+
+const itemsWithBase = items.map(item => ({ ...item, href: url(item.href) }));
 ---
 
 <nav aria-label="面包屑导航" class="mb-4">
   <ol class="flex items-center gap-2 text-sm text-gray-500">
-    {items.map((item, index) => (
+    {itemsWithBase.map((item, index) => (
       <li class="flex items-center gap-2">
         {index > 0 && <span class="text-gray-300">/</span>}
-        {index < items.length - 1 ? (
+        {index < itemsWithBase.length - 1 ? (
           <a href={item.href} class="hover:text-primary transition-colors">{item.label}</a>
         ) : (
           <span class="text-gray-800 font-medium">{item.label}</span>
