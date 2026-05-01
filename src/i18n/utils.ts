@@ -1,6 +1,9 @@
 export const languages = {
   en: { name: 'English', flag: '🇺🇸', code: 'en-US' },
   zh: { name: '中文', flag: '🇨🇳', code: 'zh-CN' },
+  ja: { name: '日本語', flag: '🇯🇵', code: 'ja-JP' },
+  ko: { name: '한국어', flag: '🇰🇷', code: 'ko-KR' },
+  de: { name: 'Deutsch', flag: '🇩🇪', code: 'de-DE' },
 };
 
 export const defaultLang = 'en';
@@ -31,6 +34,45 @@ export const translations: Record<string, Record<string, string>> = {
     emailPlaceholder: '输入邮箱地址',
     copyright: '版权所有',
     disclaimer: '内容仅供参考',
+  },
+  ja: {
+    siteName: 'LifeTips',
+    siteDesc: '生活のヒントと質の高い生活ガイド',
+    home: 'ホーム',
+    blog: 'すべての記事',
+    about: '概要',
+    latestPosts: '最新記事',
+    viewAll: 'すべて見る',
+    subscribe: '購読',
+    emailPlaceholder: 'メールアドレスを入力',
+    copyright: '全著作権所有',
+    disclaimer: '内容は参考のみ',
+  },
+  ko: {
+    siteName: 'LifeTips',
+    siteDesc: '생활 꿀팁과 품질 라이프 가이드',
+    home: '홈',
+    blog: '모든 글',
+    about: '소개',
+    latestPosts: '최신 글',
+    viewAll: '모두 보기',
+    subscribe: '구독',
+    emailPlaceholder: '이메일 입력',
+    copyright: '모든 권리 보유',
+    disclaimer: '내용은 참고용입니다',
+  },
+  de: {
+    siteName: 'LifeTips',
+    siteDesc: 'Life Hacks & Leitfaden für qualitatives Leben',
+    home: 'Home',
+    blog: 'Alle Beiträge',
+    about: 'Über uns',
+    latestPosts: 'Neueste Beiträge',
+    viewAll: 'Alle anzeigen',
+    subscribe: 'Abonnieren',
+    emailPlaceholder: 'E-Mail eingeben',
+    copyright: 'Alle Rechte vorbehalten',
+    disclaimer: 'Inhalt nur als Referenz',
   },
 };
 

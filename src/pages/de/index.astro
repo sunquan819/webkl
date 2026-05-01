@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../utils/url';
+import { languages, useTranslations } from '../../i18n/utils';
+import { getCollection } from 'astro:content';
+
+const lang = 'de';
+const t = useTranslations(lang);
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const latestPosts = allPosts.slice(0, 6);
+const aiPosts = allPosts.filter(p => p.data.category === '人工智能');
+const financePosts = allPosts.filter(p => p.data.category === '财经投资');
+---
+
+<BaseLayout
+  title="LifeTips - Life Hacks & Leitfaden für qualitatives Leben"
+  description="AI, Finanzen, Gesundheit, Reise — praktische Guides für ein besseres Leben."
+>
+  <section class="text-center py-12 md:py-20">
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+      Praktische Guides für<br />
+      <span class="text-primary">ein besseres Leben</span>
+    </h1>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-4">
+      AI, Finanzen, Geld sparen, Gesundheit — echte Tips in einfacher Sprache.
+    </p>
+    <p class="text-sm text-gray-400 mb-8">
+      Sprachen：
+      {Object.entries(languages).map(([code, info]) => (
+        <a href={url(`/${code === 'en' ? '' : code}/`)} class="mx-1 hover:text-primary transition-colors">
+          {info.flag} {info.name}
+        </a>
+      ))}
+    </p>
+    <div class="flex justify-center gap-4 flex-wrap">
+      <a href={url('/blog/')} class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors">
+        {t.blog}
+      </a>
+      <a href={url('/zh/')} class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+        🇨🇳 中文版
+      </a>
+    </div>
+  </section>
+
+  <section class="mb-12 bg-blue-50/50 rounded-2xl p-8">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+        <span>🤖</span> AI & Technologie
+      </h2>
+      <a href={url('/category/人工智能/')} class="text-sm text-primary hover:underline">Alle anzeigen →</a>
+    </div>
+    <p class="text-gray-500 mb-6">AI Models, ChatGPT, Claude, kostenlose Nutzung — praktische Guides.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      {aiPosts.slice(0, 5).map(post => (
+        <a href={url(`/blog/${post.id}/`)} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-medium text-gray-900 mb-2 line-clamp-2 text-sm">{post.data.title}</h3>
+          <p class="text-xs text-gray-500 line-clamp-2">{post.data.description}</p>
+          <span class="text-xs text-primary mt-2">🇨🇳 中文</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-12 bg-primary/5 rounded-2xl p-8">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+        <span>📈</span> Finanzen & Investieren
+      </h2>
+      <a href={url('/category/财经投资/')} class="text-sm text-primary hover:underline">Alle anzeigen →</a>
+    </div>
+    <p class="text-gray-500 mb-6">ETF Investment, Optionen Trading — Guides für Einsteiger.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {financePosts.slice(0, 4).map(post => (
+        <a href={url(`/blog/${post.id}/`)} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-medium text-gray-900 mb-2 line-clamp-2">{post.data.title}</h3>
+          <p class="text-xs text-gray-500 line-clamp-2">{post.data.description}</p>
+          <span class="text-xs text-primary mt-2">🇨🇳 中文</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8">{t.latestPosts}</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {latestPosts.map(post => (
+        <a href={url(`/blog/${post.id}/`)} class="bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-bold text-gray-900 mb-2 line-clamp-2">{post.data.title}</h3>
+          <p class="text-sm text-gray-500 line-clamp-3">{post.data.description}</p>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">{post.data.category}</span>
+            <span class="text-xs text-primary">🇨🇳 中文</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-white rounded-xl p-8 text-center border border-gray-100">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">📬 {t.subscribe}</h2>
+    <p class="text-gray-500 mb-6">Wöchentliche praktische Tips erhalten.</p>
+    <form class="flex gap-3 max-w-md mx-auto" onsubmit="return false;">
+      <input
+        type="email"
+        placeholder={t.emailPlaceholder}
+        class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-primary text-sm"
+      />
+      <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors text-sm whitespace-nowrap">
+        {t.subscribe}
+      </button>
+    </form>
+  </section>
+</BaseLayout>
