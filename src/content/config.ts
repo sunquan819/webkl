@@ -70,7 +70,7 @@ const blogDe = defineCollection({
   }),
 });
 
-export const collections = { 
+export const collections = {
   blog,
   'en/blog': blogEn,
   'ja/blog': blogJa,

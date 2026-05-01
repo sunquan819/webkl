@@ -5,22 +5,25 @@ import { url } from '../utils/url';
 import { languages } from '../i18n/utils';
 import { getCollection } from 'astro:content';
 
-const allPosts = (await getCollection('blog')).sort(
+const zhPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-const latestPosts = allPosts.slice(0, 9);
-const aiPosts = allPosts.filter(p => p.data.category === '人工智能');
-const financePosts = allPosts.filter(p => p.data.category === '财经投资');
-const healthPosts = allPosts.filter(p => p.data.category === '健康养生');
-const savingPosts = allPosts.filter(p => p.data.category === '省钱攻略');
+const enPosts = (await getCollection('en/blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 
-const categories = [...new Set(allPosts.map(p => p.data.category))];
+const allPosts = [...enPosts, ...zhPosts].slice(0, 9);
+const aiPosts = [...enPosts.filter(p => p.data.category === 'AI'), ...zhPosts.filter(p => p.data.category === '人工智能')];
+const financePosts = [...enPosts.filter(p => p.data.category === 'Finance'), ...zhPosts.filter(p => p.data.category === '财经投资')];
+const healthPosts = [...enPosts.filter(p => p.data.category === 'Health'), ...zhPosts.filter(p => p.data.category === '健康养生')];
+
+const categories = [...new Set([...enPosts.map(p => p.data.category), ...zhPosts.map(p => p.data.category)])];
 ---
 
 <BaseLayout
   title="LifeTips - Practical Guides for a Better Life"
-  description="Discover practical tips for AI, finance, health, travel, and everyday life. Make every day easier with proven strategies and expert advice."
+  description="Discover practical tips for AI, finance, health, travel, and everyday life. Make every day easier with proven strategies."
 >
   <section class="text-center py-12 md:py-20">
     <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
@@ -28,10 +31,10 @@ const categories = [...new Set(allPosts.map(p => p.data.category))];
       <span class="text-primary">a Better Life</span>
     </h1>
     <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-4">
-      From AI and finance to health and travel — real tips that actually work, explained in plain language.
+      From AI and finance to health and travel — real tips that actually work.
     </p>
     <p class="text-sm text-gray-400 mb-8">
-      Available in: 
+      Languages:
       {Object.entries(languages).map(([code, info]) => (
         <a href={url(`/${code === 'en' ? '' : code}/`)} class="mx-1 hover:text-primary transition-colors">
           {info.flag} {info.name}
@@ -48,60 +51,42 @@ const categories = [...new Set(allPosts.map(p => p.data.category))];
     </div>
   </section>
 
-  {aiPosts.length > 0 && (
+  {enPosts.length > 0 && (
     <section class="mb-12 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
           <span>🤖</span> AI & Technology
         </h2>
-        <a href={url('/category/人工智能/')} class="text-sm text-primary hover:underline">View all →</a>
+        <a href={url('/blog/')} class="text-sm text-primary hover:underline">View all →</a>
       </div>
-      <p class="text-gray-500 mb-6">Practical guides on ChatGPT, Claude, AI agents, and how to use AI tools without spending money.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-        {aiPosts.slice(0, 5).map(post => (
+      <p class="text-gray-500 mb-6">ChatGPT, Claude, AI tools guides in English.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {enPosts.slice(0, 4).map(post => (
           <a href={url(`/blog/${post.id}/`)} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
-            <h3 class="font-medium text-gray-900 mb-2 line-clamp-2 text-sm">{post.data.title}</h3>
+            <h3 class="font-medium text-gray-900 mb-2 line-clamp-2">{post.data.title}</h3>
             <p class="text-xs text-gray-500 line-clamp-2">{post.data.description}</p>
+            <span class="text-xs text-blue-600 mt-2">🇺🇸 English</span>
           </a>
         ))}
       </div>
     </section>
   )}
 
-  {financePosts.length > 0 && (
+  {zhPosts.length > 0 && (
     <section class="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
-          <span>📈</span> Finance & Investing
+          <span>🇨🇳</span> 中文文章
         </h2>
-        <a href={url('/category/财经投资/')} class="text-sm text-primary hover:underline">View all →</a>
+        <a href={url('/zh/')} class="text-sm text-primary hover:underline">查看全部 →</a>
       </div>
-      <p class="text-gray-500 mb-6">ETF basics, options trading, and investment strategies for beginners.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {financePosts.slice(0, 4).map(post => (
-          <a href={url(`/blog/${post.id}/`)} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
-            <h3 class="font-medium text-gray-900 mb-2 line-clamp-2">{post.data.title}</h3>
+      <p class="text-gray-500 mb-6">AI、理财、减肥、省钱等热门话题中文原创。</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        {zhPosts.slice(0, 5).map(post => (
+          <a href={url(`/zh/blog/${post.id}/`)} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
+            <h3 class="font-medium text-gray-900 mb-2 line-clamp-2 text-sm">{post.data.title}</h3>
             <p class="text-xs text-gray-500 line-clamp-2">{post.data.description}</p>
-          </a>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {savingPosts.length > 0 && (
-    <section class="mb-12 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-8">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
-          <span>💰</span> Money Saving Tips
-        </h2>
-        <a href={url('/category/省钱攻略/')} class="text-sm text-primary hover:underline">View all →</a>
-      </div>
-      <p class="text-gray-500 mb-6">How to save money on daily expenses, travel, groceries, and build savings from small income.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {savingPosts.slice(0, 3).map(post => (
-          <a href={url(`/blog/${post.id}/`)} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
-            <h3 class="font-medium text-gray-900 mb-2 line-clamp-2">{post.data.title}</h3>
-            <p class="text-xs text-gray-500 line-clamp-2">{post.data.description}</p>
+            <span class="text-xs text-green-600 mt-2">🇨🇳 中文</span>
           </a>
         ))}
       </div>
@@ -114,10 +99,10 @@ const categories = [...new Set(allPosts.map(p => p.data.category))];
       <a href={url('/blog/')} class="text-sm text-primary hover:underline">View all →</a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {latestPosts.slice(0, 6).map(post => (
+      {allPosts.slice(0, 6).map(post => (
         <PostCard
           title={post.data.title}
-          href={url(`/blog/${post.id}/`)}
+          href={url(`/${post.collection === 'blog' ? 'zh/blog' : 'blog'}/${post.id}/`)}
           description={post.data.description}
           date={post.data.pubDate}
           category={post.data.category}
@@ -131,7 +116,7 @@ const categories = [...new Set(allPosts.map(p => p.data.category))];
     <h2 class="text-2xl font-bold text-gray-900 mb-8">📂 All Categories</h2>
     <div class="flex flex-wrap gap-3">
       {categories.map(cat => (
-        <a href={url(`/category/${cat}/`)} class="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+        <a href={url(`/blog/`)} class="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
           {cat}
         </a>
       ))}
@@ -140,13 +125,9 @@ const categories = [...new Set(allPosts.map(p => p.data.category))];
 
   <section class="bg-white rounded-xl p-8 md:p-12 text-center border border-gray-100">
     <h2 class="text-2xl font-bold text-gray-900 mb-4">📬 Get Weekly Tips</h2>
-    <p class="text-gray-500 mb-6">Subscribe for practical tips delivered to your inbox every week.</p>
+    <p class="text-gray-500 mb-6">Subscribe for practical tips every week.</p>
     <form class="flex gap-3 max-w-md mx-auto" onsubmit="return false;">
-      <input
-        type="email"
-        placeholder="Enter your email"
-        class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-primary text-sm"
-      />
+      <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-primary text-sm" />
       <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors text-sm whitespace-nowrap">
         Subscribe
       </button>
