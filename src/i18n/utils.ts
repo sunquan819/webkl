@@ -36,6 +36,7 @@ export const translations: Record<string, Record<string, string>> = {
       cooking: '美食烹饪',
       moneySaving: '省钱攻略',
       travel: '旅行攻略',
+      finance: '财经投资',
     },
   },
   en: {
@@ -65,6 +66,7 @@ export const translations: Record<string, Record<string, string>> = {
       cooking: 'Cooking',
       moneySaving: 'Money Saving',
       travel: 'Travel Tips',
+      finance: 'Finance & Investing',
     },
   },
   ja: {
@@ -94,6 +96,7 @@ export const translations: Record<string, Record<string, string>> = {
       cooking: '料理',
       moneySaving: '節約術',
       travel: '旅行ガイド',
+      finance: '金融投資',
     },
   },
   ko: {
@@ -123,6 +126,7 @@ export const translations: Record<string, Record<string, string>> = {
       cooking: '요리',
       moneySaving: '절약 팁',
       travel: '여행 가이드',
+      finance: '금융 투자',
     },
   },
   de: {
@@ -152,6 +156,7 @@ export const translations: Record<string, Record<string, string>> = {
       cooking: 'Kochen',
       moneySaving: 'Geld sparen',
       travel: 'Reise Tipps',
+      finance: 'Finanzen & Investieren',
     },
   },
 };

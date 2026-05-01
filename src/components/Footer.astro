@@ -23,6 +23,7 @@ const year = new Date().getFullYear();
       <div>
         <h3 class="text-white font-semibold mb-4">{t.popularCategories}</h3>
         <ul class="space-y-2 text-sm">
+          <li><a href={url(getLocalizedPath('/category/财经投资/', lang))} class="hover:text-white transition-colors">📈 {t.categories.finance}</a></li>
           <li><a href={url(getLocalizedPath('/category/life-tips/', lang))} class="hover:text-white transition-colors">{t.categories.lifeTips}</a></li>
           <li><a href={url(getLocalizedPath('/category/health/', lang))} class="hover:text-white transition-colors">{t.categories.health}</a></li>
           <li><a href={url(getLocalizedPath('/category/home-storage/', lang))} class="hover:text-white transition-colors">{t.categories.homeStorage}</a></li>
