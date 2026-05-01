@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { url } from '../../utils/url';
+import { useTranslations, getLocalizedPath } from '../../i18n/utils';
+import { getCollection } from 'astro:content';
+
+const lang = 'de';
+const t = useTranslations(lang);
+
+const allPosts = (await getCollection('de/blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const latestPosts = allPosts.slice(0, 6);
+---
+
+<BaseLayout
+  title={`${t.siteName} - ${t.siteDesc}`}
+  description="Entdecken Sie praktische Life Hacks für Home Storage, Gesundheit, Kochen und mehr. Machen Sie Ihr Leben jeden Tag einfacher."
+>
+  <section class="text-center py-12 md:py-20">
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+      Machen Sie das Leben besser<br />
+      <span class="text-primary">Mit praktischen Tipps</span>
+    </h1>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-8">
+      Von Home Storage bis Gesundheit, vom Kochen bis zur Lebensweisheit—finden Sie Tipps, die das tägliche Leben einfacher machen.
+    </p>
+    <div class="flex justify-center gap-4">
+      <a href={url(getLocalizedPath('/blog/', lang))} class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors">
+        {t.blog}
+      </a>
+      <a href={url(getLocalizedPath('/about/', lang))} class="border border-gray-200 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-white transition-colors">
+        {t.about}
+      </a>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl font-bold text-gray-900">{t.latestPosts}</h2>
+      <a href={url(getLocalizedPath('/blog/', lang))} class="text-sm text-primary hover:underline">{t.viewAll} →</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {latestPosts.map(post => (
+        <PostCard
+          title={post.data.title}
+          href={url(getLocalizedPath(`/blog/${post.id.split('/').pop()}/`, lang))}
+          description={post.data.description}
+          date={post.data.pubDate}
+          category={post.data.category}
+          image={post.data.heroImage}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-white rounded-xl p-8 md:p-12 text-center border border-gray-100">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">{t.subscribeDesc}</h2>
+    <p class="text-gray-500 mb-6">{t.subscribeDesc}</p>
+    <form class="flex gap-3 max-w-md mx-auto" onsubmit="return false;">
+      <input
+        type="email"
+        placeholder={t.emailPlaceholder}
+        class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-primary text-sm"
+      />
+      <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors text-sm whitespace-nowrap">
+        {t.subscribe}
+      </button>
+    </form>
+  </section>
+</BaseLayout>

@@ -1,63 +1,80 @@
 ---
-import { url, BASE_PATH } from '../utils/url';
+import { languages, defaultLang, getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import { url } from '../utils/url';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { href: url('/'), label: '首页' },
-  { href: url('/blog/'), label: '全部文章' },
-  { href: url('/category/生活妙招/'), label: '生活妙招' },
-  { href: url('/category/健康养生/'), label: '健康养生' },
-  { href: url('/category/家居收纳/'), label: '家居收纳' },
-  { href: url('/about/'), label: '关于' },
+  { href: getLocalizedPath('/', lang), label: t.home },
+  { href: getLocalizedPath('/blog/', lang), label: t.blog },
+  { href: getLocalizedPath('/about/', lang), label: t.about },
 ];
 ---
 
 <header class="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
   <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <a href={url('/')} class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+    <a href={url(getLocalizedPath('/', lang))} class="flex items-center gap-2 hover:opacity-80 transition-opacity">
       <span class="text-2xl">🌿</span>
-      <span class="text-xl font-bold text-primary">LifeTips</span>
+      <span class="text-xl font-bold text-primary">{t.siteName}</span>
     </a>
 
-    <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="打开菜单">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-
-    <ul class="hidden md:flex items-center gap-1">
-      {navLinks.map(link => (
-        <li>
+    <div class="flex items-center gap-2">
+      <div class="hidden md:flex items-center gap-1">
+        {navLinks.map(link => (
           <a
-            href={link.href}
+            href={url(link.href)}
             class:list={[
               'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
-              currentPath === link.href || (link.href !== url('/') && currentPath.startsWith(link.href))
+              currentPath === link.href || (link.href !== getLocalizedPath('/', lang) && currentPath.startsWith(link.href))
                 ? 'bg-primary/10 text-primary'
                 : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
             ]}
           >
             {link.label}
           </a>
-        </li>
-      ))}
-    </ul>
+        ))}
+      </div>
+
+      <div class="relative">
+        <button id="lang-toggle" class="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">
+          <span>{languages[lang].flag}</span>
+          <span class="hidden md:inline">{languages[lang].name}</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        
+        <div id="lang-menu" class="hidden absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-100 py-1 min-w-[120px]">
+          {Object.entries(languages).map(([code, info]) => (
+            <a
+              href={url(getLocalizedPath(currentPath.replace(`/${lang}`, '').replace(`/${defaultLang}`, '') || '/', code as keyof typeof languages))}
+              class:list={[
+                'flex items-center gap-2 px-3 py-2 text-sm hover:bg-gray-50 transition-colors',
+                code === lang ? 'text-primary font-medium' : 'text-gray-600'
+              ]}
+            >
+              <span>{info.flag}</span>
+              <span>{info.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
   </nav>
 
   <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
     <ul class="px-4 py-2 space-y-1">
       {navLinks.map(link => (
         <li>
-          <a
-            href={link.href}
-            class:list={[
-              'block px-3 py-2 rounded-lg text-sm font-medium transition-colors',
-              currentPath === link.href || (link.href !== url('/') && currentPath.startsWith(link.href))
-                ? 'bg-primary/10 text-primary'
-                : 'text-gray-600 hover:bg-gray-50'
-            ]}
-          >
+          <a href={url(link.href)} class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">
             {link.label}
           </a>
         </li>
@@ -67,9 +84,24 @@ const navLinks = [
 </header>
 
 <script>
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  toggle?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const langToggle = document.getElementById('lang-toggle');
+  const langMenu = document.getElementById('lang-menu');
+
+  menuToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    langMenu?.classList.add('hidden');
+  });
+
+  langToggle?.addEventListener('click', () => {
+    langMenu?.classList.toggle('hidden');
+    mobileMenu?.classList.add('hidden');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!langToggle?.contains(e.target as Node) && !langMenu?.contains(e.target as Node)) {
+      langMenu?.classList.add('hidden');
+    }
   });
 </script>

@@ -1,34 +1,43 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
+import AdSlot from '../components/AdSlot.astro';
 import { url } from '../utils/url';
+import { languages } from '../i18n/utils';
 import { getCollection } from 'astro:content';
 
 const allPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-const latestPosts = allPosts.slice(0, 6);
+const latestPosts = allPosts.slice(0, 9);
 
-const categories = [...new Set(allPosts.map(post => post.data.category))];
-
-const categoryPosts = categories.map(cat => ({
+const trendingCategories = ['省钱攻略', '健康养生', '旅行攻略', '家居收纳'];
+const trendingPosts = trendingCategories.map(cat => ({
   name: cat,
-  posts: allPosts.filter(p => p.data.category === cat).slice(0, 3),
+  posts: allPosts.filter(p => p.data.category === cat).slice(0, 2),
 }));
 ---
 
 <BaseLayout
   title="LifeTips - 生活妙招与品质生活指南"
-  description="发现实用生活妙招，涵盖家居收纳、健康养生、美食烹饪等话题，让你的生活更加便捷美好。"
+  description="发现实用生活妙招，涵盖家居收纳、健康养生、美食烹饪、省钱攻略等话题，让你的生活更加便捷美好。"
 >
   <section class="text-center py-12 md:py-20">
     <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
       让生活更美好的<br />
       <span class="text-primary">实用妙招</span>
     </h1>
-    <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-8">
-      从家居收纳到健康养生，从美食烹饪到生活智慧，每一天都能找到让生活更轻松的小技巧。
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-4">
+      从家居收纳到健康养生，从省钱攻略到旅行规划，每一天都能找到让生活更轻松的小技巧。
+    </p>
+    <p class="text-sm text-gray-400 mb-8">
+      🌍 支持多语言：
+      {Object.entries(languages).map(([code, info]) => (
+        <a href={url(`/${code === 'zh' ? '' : code}/`)} class="mx-1 hover:text-primary transition-colors">
+          {info.flag} {info.name}
+        </a>
+      ))}
     </p>
     <div class="flex justify-center gap-4">
       <a href={url('/blog/')} class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors">
@@ -40,13 +49,28 @@ const categoryPosts = categories.map(cat => ({
     </div>
   </section>
 
+  <AdSlot slot="top-banner" className="my-8" />
+
   <section class="mb-16">
     <div class="flex items-center justify-between mb-8">
-      <h2 class="text-2xl font-bold text-gray-900">最新文章</h2>
+      <h2 class="text-2xl font-bold text-gray-900">🔥 最新文章</h2>
       <a href={url('/blog/')} class="text-sm text-primary hover:underline">查看全部 →</a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {latestPosts.map(post => (
+      {latestPosts.slice(0, 3).map(post => (
+        <PostCard
+          title={post.data.title}
+          href={url(`/blog/${post.id}/`)}
+          description={post.data.description}
+          date={post.data.pubDate}
+          category={post.data.category}
+          image={post.data.heroImage}
+        />
+      ))}
+    </div>
+    <AdSlot slot="in-article" className="my-6" />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+      {latestPosts.slice(3, 6).map(post => (
         <PostCard
           title={post.data.title}
           href={url(`/blog/${post.id}/`)}
@@ -60,17 +84,18 @@ const categoryPosts = categories.map(cat => ({
   </section>
 
   <section class="mb-16">
-    <h2 class="text-2xl font-bold text-gray-900 mb-8">探索分类</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {categoryPosts.map(({ name, posts }) => (
-        <div class="bg-white rounded-xl p-6 border border-gray-100">
-          <h3 class="font-bold text-gray-900 mb-4">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8">📈 热门话题</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {trendingPosts.map(({ name, posts }) => (
+        <div class="bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span class="text-primary">{name === '省钱攻略' ? '💰' : name === '健康养生' ? '🏃' : name === '旅行攻略' ? '✈️' : '🏠'}</span>
             <a href={url(`/category/${name}/`)} class="hover:text-primary transition-colors">{name}</a>
           </h3>
-          <ul class="space-y-2">
+          <ul class="space-y-3">
             {posts.map(post => (
               <li>
-                <a href={url(`/blog/${post.id}/`)} class="text-sm text-gray-500 hover:text-primary transition-colors line-clamp-1">
+                <a href={url(`/blog/${post.id}/`)} class="text-sm text-gray-500 hover:text-primary transition-colors line-clamp-2">
                   {post.data.title}
                 </a>
               </li>
@@ -81,8 +106,21 @@ const categoryPosts = categories.map(cat => ({
     </div>
   </section>
 
+  <AdSlot slot="in-article" className="my-8" />
+
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8">📂 全部分类</h2>
+    <div class="flex flex-wrap gap-3">
+      {[...new Set(allPosts.map(p => p.data.category))].map(cat => (
+        <a href={url(`/category/${cat}/`)} class="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {cat}
+        </a>
+      ))}
+    </div>
+  </section>
+
   <section class="bg-white rounded-xl p-8 md:p-12 text-center border border-gray-100">
-    <h2 class="text-2xl font-bold text-gray-900 mb-4">每周获取生活灵感</h2>
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">📬 每周获取生活灵感</h2>
     <p class="text-gray-500 mb-6">订阅我们，第一时间获取最新生活妙招和实用技巧。</p>
     <form class="flex gap-3 max-w-md mx-auto" onsubmit="return false;">
       <input
@@ -95,4 +133,6 @@ const categoryPosts = categories.map(cat => ({
       </button>
     </form>
   </section>
+
+  <AdSlot slot="bottom-banner" className="mt-8" />
 </BaseLayout>

@@ -1,43 +1,62 @@
 ---
+import { getLangFromUrl, useTranslations, getLocalizedPath, languages } from '../i18n/utils';
 import { url } from '../utils/url';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const year = new Date().getFullYear();
 ---
 
 <footer class="bg-gray-900 text-gray-400 mt-16">
   <div class="max-w-6xl mx-auto px-4 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
         <div class="flex items-center gap-2 mb-4">
           <span class="text-2xl">🌿</span>
-          <span class="text-xl font-bold text-white">LifeTips</span>
+          <span class="text-xl font-bold text-white">{t.siteName}</span>
         </div>
         <p class="text-sm leading-relaxed">
-          分享实用生活妙招，帮助你提升生活品质，让每一天都更美好。
+          {t.siteDesc}
         </p>
       </div>
 
       <div>
-        <h3 class="text-white font-semibold mb-4">热门分类</h3>
+        <h3 class="text-white font-semibold mb-4">{t.popularCategories}</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href={url('/category/生活妙招/')} class="hover:text-white transition-colors">生活妙招</a></li>
-          <li><a href={url('/category/健康养生/')} class="hover:text-white transition-colors">健康养生</a></li>
-          <li><a href={url('/category/家居收纳/')} class="hover:text-white transition-colors">家居收纳</a></li>
-          <li><a href={url('/category/美食烹饪/')} class="hover:text-white transition-colors">美食烹饪</a></li>
+          <li><a href={url(getLocalizedPath('/category/life-tips/', lang))} class="hover:text-white transition-colors">{t.categories.lifeTips}</a></li>
+          <li><a href={url(getLocalizedPath('/category/health/', lang))} class="hover:text-white transition-colors">{t.categories.health}</a></li>
+          <li><a href={url(getLocalizedPath('/category/home-storage/', lang))} class="hover:text-white transition-colors">{t.categories.homeStorage}</a></li>
+          <li><a href={url(getLocalizedPath('/category/cooking/', lang))} class="hover:text-white transition-colors">{t.categories.cooking}</a></li>
+          <li><a href={url(getLocalizedPath('/category/money-saving/', lang))} class="hover:text-white transition-colors">{t.categories.moneySaving}</a></li>
+          <li><a href={url(getLocalizedPath('/category/travel/', lang))} class="hover:text-white transition-colors">{t.categories.travel}</a></li>
         </ul>
       </div>
 
       <div>
-        <h3 class="text-white font-semibold mb-4">关于我们</h3>
+        <h3 class="text-white font-semibold mb-4">{t.aboutUs}</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href={url('/about/')} class="hover:text-white transition-colors">关于 LifeTips</a></li>
-          <li><a href={url('/blog/')} class="hover:text-white transition-colors">全部文章</a></li>
+          <li><a href={url(getLocalizedPath('/about/', lang))} class="hover:text-white transition-colors">{t.about}</a></li>
+          <li><a href={url(getLocalizedPath('/blog/', lang))} class="hover:text-white transition-colors">{t.blog}</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white font-semibold mb-4">Languages</h3>
+        <ul class="space-y-2 text-sm">
+          {Object.entries(languages).map(([code, info]) => (
+            <li>
+              <a href={url(getLocalizedPath('/', code as keyof typeof languages))} class:list={['hover:text-white transition-colors', code === lang ? 'text-white' : '']}>
+                {info.flag} {info.name}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
 
     <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
-      <p>&copy; {year} LifeTips. All rights reserved.</p>
-      <p class="mt-2 text-xs text-gray-500">本站内容仅供参考，不构成任何专业建议。</p>
+      <p>&copy; {year} {t.siteName}. {t.copyright}.</p>
+      <p class="mt-2 text-xs text-gray-500">{t.disclaimer}.</p>
     </div>
   </div>
 </footer>
