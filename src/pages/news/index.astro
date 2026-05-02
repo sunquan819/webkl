@@ -15,8 +15,8 @@ const today = allNews[0];
   description="100 important global news items daily, quick overview of world events"
 >
   <Breadcrumb items={[
-    { label: 'Home', href: '/' },
-    { label: 'Daily Global Events', href: '/news/' },
+    { label: 'Home', href: '/webkl/' },
+    { label: 'Daily Global Events', href: '/webkl/news/' },
   ]} />
 
   <h1 class="text-3xl font-bold text-gray-900 mb-4">Daily Global Events</h1>
@@ -25,7 +25,7 @@ const today = allNews[0];
   {today && (
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
       <h2 class="text-xl font-bold text-gray-900 mb-4">{today.data.title}</h2>
-      <a href={`/news/${today.data.date}/`} class="text-primary hover:underline">
+      <a href={`/webkl/news/${today.data.date}/`} class="text-primary hover:underline">
         View today's full content →
       </a>
     </div>
@@ -35,7 +35,7 @@ const today = allNews[0];
   <div class="grid gap-4">
     {allNews.map(news => (
       <a 
-        href={`/news/${news.data.date}/`}
+        href={`/webkl/news/${news.data.date}/`}
         class="block bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow"
       >
         <h3 class="font-medium text-gray-900">{news.data.title}</h3>

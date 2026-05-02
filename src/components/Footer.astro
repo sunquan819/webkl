@@ -20,8 +20,8 @@ const year = new Date().getFullYear();
       <div>
         <h3 class="text-white font-semibold mb-4">{t.blog}</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href={lang === defaultLang ? '/blog/' : `/${lang}/blog/`} class="hover:text-white transition-colors">{t.blog}</a></li>
-          <li><a href={lang === defaultLang ? '/about/' : `/${lang}/about/`} class="hover:text-white transition-colors">{t.about}</a></li>
+          <li><a href={lang === defaultLang ? '/webkl/blog/' : `/webkl/${lang}/blog/`} class="hover:text-white transition-colors">{t.blog}</a></li>
+          <li><a href={lang === defaultLang ? '/webkl/about/' : `/webkl/${lang}/about/`} class="hover:text-white transition-colors">{t.about}</a></li>
         </ul>
       </div>
 
@@ -30,7 +30,7 @@ const year = new Date().getFullYear();
         <ul class="space-y-2 text-sm">
           {Object.entries(languages).map(([code, info]) => (
             <li>
-              <a href={code === defaultLang ? '/' : `/${code}/`} class:list={['hover:text-white transition-colors', code === lang ? 'text-white' : '']}>
+              <a href={code === defaultLang ? '/webkl/' : `/webkl/${code}/`} class:list={['hover:text-white transition-colors', code === lang ? 'text-white' : '']}>
                 {info.flag} {info.name}
               </a>
             </li>

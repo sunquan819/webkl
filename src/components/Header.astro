@@ -5,16 +5,16 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const navLinks = [
-  { href: lang === defaultLang ? '/' : `/${lang}/`, label: t.home },
-  { href: lang === defaultLang ? '/blog/' : `/${lang}/blog/`, label: t.blog },
-  { href: lang === defaultLang ? '/news/' : `/${lang}/news/`, label: t.news },
-  { href: lang === defaultLang ? '/about/' : `/${lang}/about/`, label: t.about },
+  { href: lang === defaultLang ? '/webkl/' : `/webkl/${lang}/`, label: t.home },
+  { href: lang === defaultLang ? '/webkl/blog/' : `/webkl/${lang}/blog/`, label: t.blog },
+  { href: lang === defaultLang ? '/webkl/news/' : `/webkl/${lang}/news/`, label: t.news },
+  { href: lang === defaultLang ? '/webkl/about/' : `/webkl/${lang}/about/`, label: t.about },
 ];
 ---
 
 <header class="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
   <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <a href={lang === defaultLang ? '/' : `/${lang}/`} class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+    <a href={lang === defaultLang ? '/webkl/' : `/webkl/${lang}/`} class="flex items-center gap-2 hover:opacity-80 transition-opacity">
       <span class="text-2xl">🌿</span>
       <span class="text-xl font-bold text-primary">{t.siteName}</span>
     </a>
@@ -46,7 +46,7 @@ const navLinks = [
         <div id="lang-menu" class="hidden absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-100 py-1 min-w-[100px]">
           {Object.entries(languages).map(([code, info]) => (
             <a
-              href={code === defaultLang ? '/' : `/${code}/`}
+              href={code === defaultLang ? '/webkl/' : `/webkl/${code}/`}
               class:list={[
                 'flex items-center gap-2 px-3 py-2 text-sm hover:bg-gray-50 transition-colors',
                 code === lang ? 'text-primary font-medium' : 'text-gray-600'

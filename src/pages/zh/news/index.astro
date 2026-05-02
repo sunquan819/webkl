@@ -15,8 +15,8 @@ const today = allNews[0];
   description="每天100条全球重要新闻汇总，快速了解世界动态"
 >
   <Breadcrumb items={[
-    { label: '首页', href: '/zh/' },
-    { label: '每日全球大事', href: '/zh/news/' },
+    { label: '首页', href: '/webkl/zh/' },
+    { label: '每日全球大事', href: '/webkl/zh/news/' },
   ]} />
 
   <h1 class="text-3xl font-bold text-gray-900 mb-4">每日全球大事</h1>
@@ -25,7 +25,7 @@ const today = allNews[0];
   {today && (
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
       <h2 class="text-xl font-bold text-gray-900 mb-4">{today.data.title}</h2>
-      <a href={`/zh/news/${today.data.date}/`} class="text-primary hover:underline">
+      <a href={`/webkl/zh/news/${today.data.date}/`} class="text-primary hover:underline">
         查看今日完整内容 →
       </a>
     </div>
@@ -35,7 +35,7 @@ const today = allNews[0];
   <div class="grid gap-4">
     {allNews.map(news => (
       <a 
-        href={`/zh/news/${news.data.date}/`}
+        href={`/webkl/zh/news/${news.data.date}/`}
         class="block bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow"
       >
         <h3 class="font-medium text-gray-900">{news.data.title}</h3>

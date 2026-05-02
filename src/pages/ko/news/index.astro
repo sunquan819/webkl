@@ -9,11 +9,11 @@ const allNews = (await getCollection('news-ko')).sort(
 ---
 
 <BaseLayout title="매일 뉴스 - LifeTips" description="매일 세계 중요 뉴스 100선">
-  <Breadcrumb items={[{ label: '홈', href: '/ko/' }, { label: '매일 뉴스', href: '/ko/news/' }]} />
+  <Breadcrumb items={[{ label: '홈', href: '/webkl/ko/' }, { label: '매일 뉴스', href: '/webkl/ko/news/' }]} />
   <h1 class="text-3xl font-bold text-gray-900 mb-4">매일 뉴스</h1>
   <div class="grid gap-4">
     {allNews.map(news => (
-      <a href={`/ko/news/${news.data.date}/`} class="block bg-white rounded-lg p-4 hover:shadow-md">
+      <a href={`/webkl/ko/news/${news.data.date}/`} class="block bg-white rounded-lg p-4 hover:shadow-md">
         <h3 class="font-medium">{news.data.title}</h3>
         <p class="text-sm text-gray-500">{news.data.date}</p>
       </a>

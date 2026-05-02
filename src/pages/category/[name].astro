@@ -27,9 +27,9 @@ const { category, posts } = Astro.props;
   description={`浏览${category}相关的所有生活妙招文章，获取实用的${category}技巧和建议。`}
 >
   <Breadcrumb items={[
-    { label: '首页', href: '/zh/' },
-    { label: '全部文章', href: '/zh/blog/' },
-    { label: category, href: `/category/${category}/` },
+    { label: '首页', href: '/webkl/zh/' },
+    { label: '全部文章', href: '/webkl/zh/blog/' },
+    { label: category, href: `/webkl/category/${category}/` },
   ]} />
 
   <h1 class="text-3xl font-bold text-gray-900 mb-2">{category}</h1>
@@ -39,7 +39,7 @@ const { category, posts } = Astro.props;
     {posts.map(post => (
       <PostCard
         title={post.data.title}
-        href={`/zh/blog/${post.id.replace('.md', '')}/`}
+        href={`/webkl/zh/blog/${post.id.replace('.md', '')}/`}
         description={post.data.description}
         date={post.data.pubDate}
         category={post.data.category}

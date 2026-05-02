@@ -35,16 +35,16 @@ const categories = [...new Set([...enPosts.map(p => p.data.category), ...zhPosts
     <p class="text-sm text-gray-400 mb-8">
       Languages:
       {Object.entries(languages).map(([code, info]) => (
-        <a href={code === 'en' ? '/' : `/${code}/`} class="mx-1 hover:text-primary transition-colors">
+        <a href={code === 'en' ? '/webkl/' : `/webkl/${code}/`} class="mx-1 hover:text-primary transition-colors">
           {info.flag} {info.name}
         </a>
       ))}
     </p>
     <div class="flex justify-center gap-4 flex-wrap">
-      <a href="/blog/" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors">
+      <a href="/webkl/blog/" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors">
         Browse All Posts
       </a>
-      <a href="/zh/" class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+      <a href="/webkl/zh/" class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
         🇨🇳 中文版
       </a>
     </div>
@@ -56,12 +56,12 @@ const categories = [...new Set([...enPosts.map(p => p.data.category), ...zhPosts
         <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
           <span>🤖</span> AI & Technology
         </h2>
-        <a href="/blog/" class="text-sm text-primary hover:underline">View all →</a>
+<a href="/webkl/blog/" class="text-sm text-primary hover:underline">View all →</a>
       </div>
       <p class="text-gray-500 mb-6">ChatGPT, Claude, AI tools guides in English.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {enPosts.slice(0, 4).map(post => (
-          <a href={`/blog/${post.id.replace('.md', '')}/`} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
+          <a href={`/webkl/blog/${post.id.replace('.md', '')}/`} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
             <h3 class="font-medium text-gray-900 mb-2 line-clamp-2">{post.data.title}</h3>
             <p class="text-xs text-gray-500 line-clamp-2">{post.data.description}</p>
             <span class="text-xs text-blue-600 mt-2">🇺🇸 English</span>
@@ -77,12 +77,12 @@ const categories = [...new Set([...enPosts.map(p => p.data.category), ...zhPosts
         <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
           <span>🇨🇳</span> 中文文章
         </h2>
-        <a href="/zh/" class="text-sm text-primary hover:underline">查看全部 →</a>
+        <a href="/webkl/zh/" class="text-sm text-primary hover:underline">查看全部 →</a>
       </div>
       <p class="text-gray-500 mb-6">AI、理财、减肥、省钱等热门话题中文原创。</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         {zhPosts.slice(0, 5).map(post => (
-          <a href={`/zh/blog/${post.id.replace('.md', '')}/`} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
+          <a href={`/webkl/zh/blog/${post.id.replace('.md', '')}/`} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
             <h3 class="font-medium text-gray-900 mb-2 line-clamp-2 text-sm">{post.data.title}</h3>
             <p class="text-xs text-gray-500 line-clamp-2">{post.data.description}</p>
             <span class="text-xs text-green-600 mt-2">🇨🇳 中文</span>
@@ -95,7 +95,7 @@ const categories = [...new Set([...enPosts.map(p => p.data.category), ...zhPosts
   <section class="mb-16">
     <div class="flex items-center justify-between mb-8">
       <h2 class="text-2xl font-bold text-gray-900">🔥 Latest Posts</h2>
-      <a href="/blog/" class="text-sm text-primary hover:underline">View all →</a>
+      <a href="/webkl/blog/" class="text-sm text-primary hover:underline">View all →</a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {allPosts.slice(0, 6).map(post => {
@@ -103,7 +103,7 @@ const categories = [...new Set([...enPosts.map(p => p.data.category), ...zhPosts
         return (
           <PostCard
             title={post.data.title}
-            href={`${langPrefix}/blog/${post.id.replace('.md', '')}/`}
+            href={`/webkl${langPrefix}/blog/${post.id.replace('.md', '')}/`}
             description={post.data.description}
             date={post.data.pubDate}
             category={post.data.category}
@@ -118,7 +118,7 @@ const categories = [...new Set([...enPosts.map(p => p.data.category), ...zhPosts
     <h2 class="text-2xl font-bold text-gray-900 mb-8">📂 All Categories</h2>
     <div class="flex flex-wrap gap-3">
       {categories.map(cat => (
-        <a href="/blog/" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+        <a href="/webkl/blog/" class="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
           {cat}
         </a>
       ))}
