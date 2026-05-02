@@ -70,10 +70,47 @@ const blogDe = defineCollection({
   }),
 });
 
+const newsSchema = z.object({
+  date: z.string(),
+  title: z.string(),
+  description: z.string().optional(),
+  source: z.string().optional(),
+});
+
+const newsZh = defineCollection({
+  type: 'content',
+  schema: newsSchema,
+});
+
+const newsEn = defineCollection({
+  type: 'content',
+  schema: newsSchema,
+});
+
+const newsJa = defineCollection({
+  type: 'content',
+  schema: newsSchema,
+});
+
+const newsKo = defineCollection({
+  type: 'content',
+  schema: newsSchema,
+});
+
+const newsDe = defineCollection({
+  type: 'content',
+  schema: newsSchema,
+});
+
 export const collections = {
   blog,
   'blog-en': blogEn,
   'blog-ja': blogJa,
   'blog-ko': blogKo,
   'blog-de': blogDe,
+  'news-zh': newsZh,
+  'news-en': newsEn,
+  'news-ja': newsJa,
+  'news-ko': newsKo,
+  'news-de': newsDe,
 };

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const newsEntries = await getCollection('news-ja');
+  return newsEntries.map(entry => ({ params: { date: entry.data.date }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={entry.data.title}>
+  <article class="max-w-4xl mx-auto prose">
+    <Content />
+  </article>
+</BaseLayout>

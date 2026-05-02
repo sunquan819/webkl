@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import { url } from '../../../utils/url';
+import { getCollection } from 'astro:content';
+
+const allNews = (await getCollection('news-de')).sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+);
+---
+
+<BaseLayout title="Tagesnachrichten - LifeTips" description="100 wichtige globale Ereignisse täglich">
+  <Breadcrumb items={[{ label: 'Home', href: '/de/' }, { label: 'Tagesnachrichten', href: '/de/news/' }]} />
+  <h1 class="text-3xl font-bold text-gray-900 mb-4">Tagesnachrichten</h1>
+  <div class="grid gap-4">
+    {allNews.map(news => (
+      <a href={url(`/de/news/${news.data.date}/`)} class="block bg-white rounded-lg p-4 hover:shadow-md">
+        <h3 class="font-medium">{news.data.title}</h3>
+        <p class="text-sm text-gray-500">{news.data.date}</p>
+      </a>
+    ))}
+  </div>
+</BaseLayout>

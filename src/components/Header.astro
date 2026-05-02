@@ -11,6 +11,7 @@ const isBlogPost = currentPath.includes('/blog/') && !currentPath.endsWith('/blo
 const navLinks = [
   { href: getLocalizedPath('/', lang), label: t.home },
   { href: getLocalizedPath('/blog/', lang), label: t.blog },
+  { href: getLocalizedPath('/news/', lang), label: t.news },
   { href: getLocalizedPath('/about/', lang), label: t.about },
 ];
 ---
