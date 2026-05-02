@@ -82,7 +82,8 @@ export const translations: Record<string, Record<string, string>> = {
 };
 
 export function getLangFromUrl(url: URL) {
-  const [, lang] = url.pathname.split('/');
+  const path = url.pathname.replace('/webkl', '');
+  const [, lang] = path.split('/');
   if (lang in languages) return lang as keyof typeof languages;
   return defaultLang;
 }
