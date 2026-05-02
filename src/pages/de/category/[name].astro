@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostCard from '../../../components/PostCard.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog-de');
+  const categories = [...new Set(allPosts.map(post => post.data.category))];
+
+  return categories.map(category => ({
+    params: { name: category },
+    props: {
+      category,
+      posts: allPosts
+        .filter(post => post.data.category === category)
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
+  }));
+}
+
+const { category, posts } = Astro.props;
+---
+
+<BaseLayout
+  title={`${category} - Kategorie`}
+  description={`Alle ${category} Artikel und Tipps。`}
+>
+  <Breadcrumb items={[
+    { label: 'Startseite', href: '/webkl/de/' },
+    { label: 'Alle Artikel', href: '/webkl/de/blog/' },
+    { label: category, href: `/webkl/de/category/${category}/` },
+  ]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">{category}</h1>
+  <p class="text-gray-500 mb-8">{posts.length} Artikel</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {posts.map(post => (
+      <PostCard
+        title={post.data.title}
+        href={`/webkl/de/blog/${post.id.replace('.md', '')}/`}
+        description={post.data.description}
+        date={post.data.pubDate}
+        category={post.data.category}
+        image={post.data.heroImage}
+      />
+    ))}
+  </div>
+</BaseLayout>
