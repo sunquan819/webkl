@@ -1,12 +1,9 @@
 ---
-import { languages, getLangFromUrl, useTranslations, getLocalizedPath, defaultLang } from '../i18n/utils';
+import { languages, getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import { url } from '../utils/url';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const currentPath = Astro.url.pathname;
-
-const isBlogPost = currentPath.includes('/blog/') && !currentPath.endsWith('/blog/');
 
 const navLinks = [
   { href: getLocalizedPath('/', lang), label: t.home },
@@ -30,9 +27,7 @@ const navLinks = [
             href={url(link.href)}
             class:list={[
               'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
-              currentPath === link.href || (link.href !== getLocalizedPath('/', lang) && currentPath.startsWith(link.href))
-                ? 'bg-primary/10 text-primary'
-                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+              link.href === getLocalizedPath('/', lang) ? 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
             ]}
           >
             {link.label}
@@ -50,24 +45,18 @@ const navLinks = [
         </button>
         
         <div id="lang-menu" class="hidden absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-100 py-1 min-w-[100px]">
-          {Object.entries(languages).map(([code, info]) => {
-            const targetPath = isBlogPost 
-              ? getLocalizedPath('/blog/', code as keyof typeof languages)
-              : getLocalizedPath(currentPath.replace(`/${lang}`, '').replace(`/${defaultLang}`, '') || '/', code as keyof typeof languages);
-            
-            return (
-              <a
-                href={url(targetPath)}
-                class:list={[
-                  'flex items-center gap-2 px-3 py-2 text-sm hover:bg-gray-50 transition-colors',
-                  code === lang ? 'text-primary font-medium' : 'text-gray-600'
-                ]}
-              >
-                <span>{info.flag}</span>
-                <span>{info.name}</span>
-              </a>
-            );
-          })}
+          {Object.entries(languages).map(([code, info]) => (
+            <a
+              href={url(getLocalizedPath('/', code as keyof typeof languages))}
+              class:list={[
+                'flex items-center gap-2 px-3 py-2 text-sm hover:bg-gray-50 transition-colors',
+                code === lang ? 'text-primary font-medium' : 'text-gray-600'
+              ]}
+            >
+              <span>{info.flag}</span>
+              <span>{info.name}</span>
+            </a>
+          ))}
         </div>
       </div>
 
