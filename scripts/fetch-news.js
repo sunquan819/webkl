@@ -1,111 +1,134 @@
 import fs from 'fs';
 import path from 'path';
+import https from 'https';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 
 const NEWS_DIR = './src/content';
 const LANGUAGES = ['zh', 'en', 'ja', 'ko', 'de'];
 
-async function fetchNews() {
-  console.log('Fetching news from various sources...');
+const PROXY_URL = process.env.HTTPS_PROXY || process.env.HTTP_PROXY || null;
+const agent = PROXY_URL ? new HttpsProxyAgent(PROXY_URL) : null;
+
+const NEWS_SOURCES = [
+  { url: 'https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en', lang: 'en' },
+  { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', lang: 'en' },
+  { url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', lang: 'en' },
+  { url: 'https://news.google.com/rss?hl=zh-CN&gl=CN&ceid=CN:zh-Hans', lang: 'zh' },
+  { url: 'https://www.chinanews.com.cn/rss/splb.xml', lang: 'zh' },
+  { url: 'https://news.google.com/rss?hl=ja&gl=JP&ceid=JP:ja', lang: 'ja' },
+  { url: 'https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko', lang: 'ko' },
+  { url: 'https://news.google.com/rss?hl=de&gl=DE&ceid=DE:de', lang: 'de' },
+  { url: 'https://rss.dw.com/rss/rss-en-all', lang: 'de' },
+];
+
+async function fetchRSS(url) {
+  return new Promise((resolve, reject) => {
+    const options = {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'Accept': 'application/rss+xml, application/xml, text/xml',
+      },
+      agent: agent,
+    };
+    
+    https.get(url, options, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => resolve(data));
+    }).on('error', reject);
+  });
+}
+
+function parseRSS(xml, maxItems = 100) {
+  const items = [];
+  const itemRegex = /<item>(.*?)<\/item>/gs;
+  const matches = xml.matchAll(itemRegex);
   
-  const newsItems = [];
-  
-  const sources = [
-    { name: 'World Politics', count: 20 },
-    { name: 'Economy & Finance', count: 20 },
-    { name: 'Technology', count: 20 },
-    { name: 'Science & Environment', count: 15 },
-    { name: 'Sports', count: 10 },
-    { name: 'Culture & Arts', count: 15 },
-  ];
-  
-  let index = 1;
-  for (const source of sources) {
-    for (let i = 0; i < source.count; i++) {
-      newsItems.push({
-        index,
-        category: source.name,
-        title: `[Sample] ${source.name} headline ${i + 1}`,
-        summary: 'Brief summary of this news item...',
+  for (const match of matches) {
+    if (items.length >= maxItems) break;
+    const itemXml = match[1];
+    
+    const titleMatch = itemXml.match(/<title>(.*?)<\/title>/);
+    const linkMatch = itemXml.match(/<link>(.*?)<\/link>/);
+    const descMatch = itemXml.match(/<description>(.*?)<\/description>/);
+    
+    if (titleMatch) {
+      let title = titleMatch[1].replace(/<[^>]+>/g, '').trim();
+      let description = descMatch ? descMatch[1].replace(/<[^>]+>/g, '').trim() : '';
+      description = description.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+      description = description.replace(/<[^>]+>/g, '').trim();
+      
+      items.push({
+        title,
+        link: linkMatch ? linkMatch[1].trim() : '',
+        description: description.substring(0, 150),
       });
-      index++;
     }
   }
   
-  return newsItems;
+  return items;
+}
+
+async function fetchNews() {
+  console.log('Fetching news from Google News RSS...');
+  if (PROXY_URL) console.log('Using proxy:', PROXY_URL);
+  
+  const newsByLang = {};
+  
+  for (const source of NEWS_SOURCES) {
+    try {
+      console.log(`Fetching: ${source.url}`);
+      const xml = await fetchRSS(source.url);
+      const items = parseRSS(xml, 100);
+      
+      if (!newsByLang[source.lang]) {
+        newsByLang[source.lang] = [];
+      }
+      
+      for (const item of items) {
+        newsByLang[source.lang].push({
+          title: item.title,
+          link: item.link,
+          summary: item.description.substring(0, 150),
+        });
+      }
+      
+      console.log(`  Found ${items.length} items for ${source.lang}`);
+    } catch (err) {
+      console.error(`  Error fetching ${source.url}:`, err.message);
+    }
+  }
+  
+  const total = Object.values(newsByLang).reduce((sum, arr) => sum + arr.length, 0);
+  console.log(`Total: ${total} news items`);
+  return newsByLang;
 }
 
 function generateMarkdown(newsItems, lang) {
   const date = new Date().toISOString().split('T')[0];
   
   const titles = {
-    zh: `${date}全球大事100条`,
-    en: `100 Major Global Events on ${date}`,
-    ja: `${date}世界重要ニュース100選`,
-    ko: `${date} 세계 중요 뉴스 100선`,
-    de: `100 Wichtige globale Ereignisse am ${date}`,
-  };
-  
-  const categoryHeaders = {
-    zh: {
-      'World Politics': '政治要闻',
-      'Economy & Finance': '经济金融',
-      'Technology': '科技',
-      'Science & Environment': '科学与环境',
-      'Sports': '体育',
-      'Culture & Arts': '文化与艺术',
-    },
-    en: {
-      'World Politics': 'World Politics',
-      'Economy & Finance': 'Economy & Finance',
-      'Technology': 'Technology',
-      'Science & Environment': 'Science & Environment',
-      'Sports': 'Sports',
-      'Culture & Arts': 'Culture & Arts',
-    },
-    ja: {
-      'World Politics': '政治ニュース',
-      'Economy & Finance': '経済・金融',
-      'Technology': '技術',
-      'Science & Environment': '科学・環境',
-      'Sports': 'スポーツ',
-      'Culture & Arts': '文化・芸術',
-    },
-    ko: {
-      'World Politics': '정치 뉴스',
-      'Economy & Finance': '경제/금융',
-      'Technology': '기술',
-      'Science & Environment': '과학/환경',
-      'Sports': '스포츠',
-      'Culture & Arts': '문화/예술',
-    },
-    de: {
-      'World Politics': 'Weltpolitik',
-      'Economy & Finance': 'Wirtschaft & Finanzen',
-      'Technology': 'Technologie',
-      'Science & Environment': 'Wissenschaft & Umwelt',
-      'Sports': 'Sport',
-      'Culture & Arts': 'Kultur & Kunst',
-    },
+    zh: `${date}全球大事`,
+    en: `Major Global Events on ${date}`,
+    ja: `${date}世界重要ニュース`,
+    ko: `${date} 세계 중요 뉴스`,
+    de: `Wichtige globale Ereignisse am ${date}`,
   };
   
   let content = `---
 date: "${date}"
 title: "${titles[lang]}"
-description: "Daily global events summary"
-source: "Various news sources"
+description: "Daily global events summary - ${newsItems.length} news items"
+source: "Google News RSS"
 ---
 
 `;
   
-  const categories = [...new Set(newsItems.map(item => item.category))];
-  
-  for (const category of categories) {
-    const header = categoryHeaders[lang][category] || category;
-    content += `## ${header}\n\n`;
-    
-    const categoryItems = newsItems.filter(item => item.category === category);
-    for (const item of categoryItems) {
-      content += `${item.index}. **${item.title}** - ${item.summary}\n`;
+  for (let i = 0; i < newsItems.length; i++) {
+    const item = newsItems[i];
+    content += `${i + 1}. **${item.title}**\n`;
+    if (item.summary) {
+      content += `   ${item.summary}\n`;
     }
     content += '\n';
   }
@@ -114,7 +137,7 @@ source: "Various news sources"
 }
 
 async function main() {
-  const newsItems = await fetchNews();
+  const newsByLang = await fetchNews();
   
   for (const lang of LANGUAGES) {
     const dir = path.join(NEWS_DIR, `news-${lang}`);
@@ -125,12 +148,13 @@ async function main() {
     const date = new Date().toISOString().split('T')[0];
     const filePath = path.join(dir, `${date}.md`);
     
-    if (!fs.existsSync(filePath)) {
-      const content = generateMarkdown(newsItems, lang);
+    const items = newsByLang[lang] || [];
+    if (items.length > 0) {
+      const content = generateMarkdown(items, lang);
       fs.writeFileSync(filePath, content);
-      console.log(`Created: ${filePath}`);
+      console.log(`Created: ${filePath} (${items.length} items)`);
     } else {
-      console.log(`Already exists: ${filePath}`);
+      console.log(`No items for ${lang}, skipping`);
     }
   }
   

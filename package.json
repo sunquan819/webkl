@@ -19,5 +19,8 @@
     "@astrojs/tailwind": "^5.1.5",
     "astro": "^4.16.19",
     "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "https-proxy-agent": "^9.0.0"
   }
 }
