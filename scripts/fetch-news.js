@@ -39,6 +39,19 @@ async function fetchRSS(url) {
   });
 }
 
+function decodeHtmlEntities(str) {
+  if (!str) return '';
+  return str
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#(\d+);/g, (match, num) => String.fromCharCode(parseInt(num)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (match, hex) => String.fromCharCode(parseInt(hex, 16)));
+}
+
 function parseRSS(xml, maxItems = 100) {
   const items = [];
   const itemRegex = /<item>(.*?)<\/item>/gs;
@@ -53,15 +66,13 @@ function parseRSS(xml, maxItems = 100) {
     const descMatch = itemXml.match(/<description>(.*?)<\/description>/);
     
     if (titleMatch) {
-      let title = titleMatch[1].replace(/<[^>]+>/g, '').trim();
-      let description = descMatch ? descMatch[1].replace(/<[^>]+>/g, '').trim() : '';
-      description = description.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
-      description = description.replace(/<[^>]+>/g, '').trim();
+      let title = decodeHtmlEntities(titleMatch[1].replace(/<[^>]+>/g, '').trim());
+      let description = descMatch ? decodeHtmlEntities(descMatch[1].replace(/<[^>]+>/g, '').trim()) : '';
       
       items.push({
         title,
         link: linkMatch ? linkMatch[1].trim() : '',
-        description: description.substring(0, 150),
+        description: description.substring(0, 200),
       });
     }
   }
