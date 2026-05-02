@@ -39,7 +39,7 @@ const categories = [...new Set(allPosts.map(post => post.data.category))];
     {allPosts.map(post => (
       <PostCard
         title={post.data.title}
-        href={url(`/ko/blog/${post.id}/`)}
+        href={url(`/ko/blog/${post.id.replace('.md', '')}/`)}
         description={post.data.description}
         date={post.data.pubDate}
         category={post.data.category}

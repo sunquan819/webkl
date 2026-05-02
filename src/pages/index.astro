@@ -62,7 +62,7 @@ const categories = [...new Set([...enPosts.map(p => p.data.category), ...zhPosts
       <p class="text-gray-500 mb-6">ChatGPT, Claude, AI tools guides in English.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {enPosts.slice(0, 4).map(post => (
-          <a href={url(`/blog/${post.id}/`)} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
+          <a href={url(`/blog/${post.id.replace('.md', '')}/`)} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
             <h3 class="font-medium text-gray-900 mb-2 line-clamp-2">{post.data.title}</h3>
             <p class="text-xs text-gray-500 line-clamp-2">{post.data.description}</p>
             <span class="text-xs text-blue-600 mt-2">🇺🇸 English</span>
@@ -83,7 +83,7 @@ const categories = [...new Set([...enPosts.map(p => p.data.category), ...zhPosts
       <p class="text-gray-500 mb-6">AI、理财、减肥、省钱等热门话题中文原创。</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         {zhPosts.slice(0, 5).map(post => (
-          <a href={url(`/zh/blog/${post.id}/`)} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
+          <a href={url(`/zh/blog/${post.id.replace('.md', '')}/`)} class="bg-white rounded-lg p-4 border border-gray-100 hover:shadow-md transition-shadow">
             <h3 class="font-medium text-gray-900 mb-2 line-clamp-2 text-sm">{post.data.title}</h3>
             <p class="text-xs text-gray-500 line-clamp-2">{post.data.description}</p>
             <span class="text-xs text-green-600 mt-2">🇨🇳 中文</span>
