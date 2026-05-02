@@ -1,3 +1,5 @@
+import { BASE_PATH } from '../utils/url';
+
 export const languages = {
   en: { name: 'English', flag: '🇺🇸', code: 'en-US' },
   zh: { name: '中文', flag: '🇨🇳', code: 'zh-CN' },
@@ -6,6 +8,7 @@ export const languages = {
   de: { name: 'Deutsch', flag: '🇩🇪', code: 'de-DE' },
 };
 
+export { BASE_PATH };
 export const defaultLang = 'en';
 
 export const translations: Record<string, Record<string, string>> = {

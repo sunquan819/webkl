@@ -99,16 +99,19 @@ const categories = [...new Set([...enPosts.map(p => p.data.category), ...zhPosts
       <a href={url('/blog/')} class="text-sm text-primary hover:underline">View all →</a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {allPosts.slice(0, 6).map(post => (
-        <PostCard
-          title={post.data.title}
-          href={url(`/${post.collection === 'blog' ? 'zh/blog' : 'blog'}/${post.id}/`)}
-          description={post.data.description}
-          date={post.data.pubDate}
-          category={post.data.category}
-          image={post.data.heroImage}
-        />
-      ))}
+      {allPosts.slice(0, 6).map(post => {
+        const langPrefix = post.collection === 'blog' ? '/zh' : '';
+        return (
+          <PostCard
+            title={post.data.title}
+            href={url(`${langPrefix}/blog/${post.id.replace('.md', '')}/`)}
+            description={post.data.description}
+            date={post.data.pubDate}
+            category={post.data.category}
+            image={post.data.heroImage}
+          />
+        );
+      })}
     </div>
   </section>
 
