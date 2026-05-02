@@ -1,10 +1,8 @@
 ---
 import { languages, getLangFromUrl, useTranslations, defaultLang } from '../i18n/utils';
-import { BASE_PATH } from '../utils/url';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { href: lang === defaultLang ? '/' : `/${lang}/`, label: t.home },
@@ -12,18 +10,11 @@ const navLinks = [
   { href: lang === defaultLang ? '/news/' : `/${lang}/news/`, label: t.news },
   { href: lang === defaultLang ? '/about/' : `/${lang}/about/`, label: t.about },
 ];
-
-function stripBase(path: string): string {
-  if (path.startsWith(BASE_PATH)) {
-    return path.slice(BASE_PATH.length) || '/';
-  }
-  return path;
-}
 ---
 
 <header class="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
   <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <a href={BASE_PATH + (lang === defaultLang ? '/' : `/${lang}/`)} class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+    <a href={lang === defaultLang ? '/' : `/${lang}/`} class="flex items-center gap-2 hover:opacity-80 transition-opacity">
       <span class="text-2xl">🌿</span>
       <span class="text-xl font-bold text-primary">{t.siteName}</span>
     </a>
@@ -32,7 +23,7 @@ function stripBase(path: string): string {
       <div class="hidden md:flex items-center gap-1">
         {navLinks.map(link => (
           <a
-            href={BASE_PATH + link.href}
+            href={link.href}
             class:list={[
               'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
               'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
@@ -53,30 +44,18 @@ function stripBase(path: string): string {
         </button>
         
         <div id="lang-menu" class="hidden absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-100 py-1 min-w-[100px]">
-          {Object.entries(languages).map(([code, info]) => {
-            let pathWithoutBase = stripBase(currentPath);
-            
-            if (lang !== defaultLang && pathWithoutBase.startsWith(`/${lang}`)) {
-              pathWithoutBase = pathWithoutBase.slice(`/${lang}`.length) || '/';
-            }
-            
-            const targetPath = code === defaultLang 
-              ? pathWithoutBase 
-              : `/${code}${pathWithoutBase}`;
-            
-            return (
-              <a
-                href={BASE_PATH + targetPath}
-                class:list={[
-                  'flex items-center gap-2 px-3 py-2 text-sm hover:bg-gray-50 transition-colors',
-                  code === lang ? 'text-primary font-medium' : 'text-gray-600'
-                ]}
-              >
-                <span>{info.flag}</span>
-                <span>{info.name}</span>
-              </a>
-            );
-          })}
+          {Object.entries(languages).map(([code, info]) => (
+            <a
+              href={code === defaultLang ? '/' : `/${code}/`}
+              class:list={[
+                'flex items-center gap-2 px-3 py-2 text-sm hover:bg-gray-50 transition-colors',
+                code === lang ? 'text-primary font-medium' : 'text-gray-600'
+              ]}
+            >
+              <span>{info.flag}</span>
+              <span>{info.name}</span>
+            </a>
+          ))}
         </div>
       </div>
 
@@ -92,7 +71,7 @@ function stripBase(path: string): string {
     <ul class="px-4 py-2 space-y-1">
       {navLinks.map(link => (
         <li>
-          <a href={BASE_PATH + link.href} class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">
+          <a href={link.href} class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">
             {link.label}
           </a>
         </li>

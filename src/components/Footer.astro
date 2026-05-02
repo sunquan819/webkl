@@ -1,16 +1,9 @@
 ---
-import { getLangFromUrl, useTranslations, languages, defaultLang, BASE_PATH } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, languages, defaultLang } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const year = new Date().getFullYear();
-
-function getLocalizedUrl(path: string, targetLang: string): string {
-  if (targetLang === defaultLang) {
-    return BASE_PATH + path;
-  }
-  return BASE_PATH + '/' + targetLang + path;
-}
 ---
 
 <footer class="bg-gray-900 text-gray-400 mt-16">
@@ -27,8 +20,8 @@ function getLocalizedUrl(path: string, targetLang: string): string {
       <div>
         <h3 class="text-white font-semibold mb-4">{t.blog}</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href={getLocalizedUrl('/blog/', lang)} class="hover:text-white transition-colors">{t.blog}</a></li>
-          <li><a href={getLocalizedUrl('/about/', lang)} class="hover:text-white transition-colors">{t.about}</a></li>
+          <li><a href={lang === defaultLang ? '/blog/' : `/${lang}/blog/`} class="hover:text-white transition-colors">{t.blog}</a></li>
+          <li><a href={lang === defaultLang ? '/about/' : `/${lang}/about/`} class="hover:text-white transition-colors">{t.about}</a></li>
         </ul>
       </div>
 
@@ -37,7 +30,7 @@ function getLocalizedUrl(path: string, targetLang: string): string {
         <ul class="space-y-2 text-sm">
           {Object.entries(languages).map(([code, info]) => (
             <li>
-              <a href={getLocalizedUrl('/', code)} class:list={['hover:text-white transition-colors', code === lang ? 'text-white' : '']}>
+              <a href={code === defaultLang ? '/' : `/${code}/`} class:list={['hover:text-white transition-colors', code === lang ? 'text-white' : '']}>
                 {info.flag} {info.name}
               </a>
             </li>
