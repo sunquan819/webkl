@@ -134,5 +134,3 @@ He gripped den Reverse Mortal Pearl tighter.
 ---
 
 **Next Kapitel Preview:** Lin Xuan forcibly enters Xuantian Sect、begins reverse-law cultivation. Die sect's cruelty is far more terrifying als he imagined.
-
-*(Kapitel word count: 650、infused mit Xian Ni core elements: cold personality、life-death choice、reverse fate、cruel world)*
