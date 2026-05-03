@@ -1,9 +1,9 @@
 ---
-title: "Reverse Mortal Chronicle: Kapitel 1 - Jumping Off the Cliff"
-description: "Die cultivation world's laws sind cruel. Those ohne spiritual roots können nur fate akzeptieren. But Lin Xuan chose another path—jumping von Juebi Peak. At the edge des death、he obtained den Reverse Mortal Pearl. Cost: lifetime tribulations、nine deaths für one life."
+title: "Reverse Mortal Chronicle: Kapitel 1 - Der Sprung vom Abgrund"
+description: "Die Gesetze der Kultivierungswelt sind grausam. Ohne spirituelle Wurzeln kann man nur das Schicksal akzeptieren. Aber Lin Xuan chose einen anderen Weg—er sprang vom Juebi Peak. An der Grenze zwischen Leben und Tod erhielt er das Reverse Mortal Pearl. Kosten: ein Leben voller Prüfungen, neun Tode für ein Leben."
 pubDate: 2026-05-03
 category: "Roman Serie"
-tags: ["cultivation", "Reverse Mortal Chronicle", "fantasy"]
+tags: ["Kultivierung", "Reverse Mortal Chronicle", "Fantasy"]
 author: "LifeTips"
 heroImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=400&fit=crop"
 type: "novel"
@@ -11,126 +11,126 @@ series: "Reverse Mortal Chronicle"
 chapter: 1
 ---
 
-## Kapitel 1: Jumping Off the Cliff
+## Kapitel 1: Der Sprung vom Abgrund
 
-Beneath der Xuantian Sect、über a thousand youths waited zu test spiritual roots.
+Unter dem Xuantian-Sekt warteten über tausend Jugendliche auf die Prüfung ihrer spirituellen Wurzeln.
 
-Spiritual roots determined fate. Those mit spiritual roots cultivated für immortality. Those ohne died in ein hundred years.
+Spirituelle Wurzeln bestimmt das Schicksal. Wer spirituelle Wurzeln hat, kultiviert für Unsterblichkeit. Wer sie nicht hat, stirbt in hundert Jahren.
 
-Dies war die cultivation world's law.
+Das war das Gesetz der Kultivierungswelt.
 
-Lin Xuan stood at den back der line. Sixteen years old、walked von Lin Family Village、begged along the way、nearly starved.
+Lin Xuan stand am Ende der Reihe. Sechzehn Jahre alt, kam aus dem Lin-Familien Dorf, bettelte auf dem Weg, fast verhungert.
 
-He knew sein situation. Without spiritual roots、he could nur fate akzeptieren. Those who fate akzeptierten died in ein hundred years. Those who didn't—the cultivation world didn't allow them zu exist.
+Er kannte seine Situation. Ohne spirituelle Wurzeln konnte er nur das Schicksal akzeptieren. Wer das Schicksal akzeptiert, stirbt in hundert Jahren. Wer es nicht akzeptiert—die Kultivierungswelt erlaubt solche Existenzen nicht.
 
-Ahead in der line、someone detected spiritual roots、knelt zu thank. Someone didn't、cried und begged.
+Vorne in der Reihe wurde jemand mit spirituellen Wurzeln entdeckt, kniete dankend. Jemand ohne Wurzeln schrie und bettelte.
 
-Der white-robed disciple looked at them coldly: "Keine spiritual roots. Eliminated."
+Der weißgekleidete Schüler blickte sie kalt an: "Keine spirituellen Wurzeln. Eliminiert."
 
-Kein mercy、kein sympathy. Die cultivation world war like this.
+Kein Erbarmen, keine Sympathie. So war die Kultivierungswelt.
 
-Finally Lin Xuan's turn.
+Endlich Lin Xuans Turn.
 
-Der white-robed disciple took out den testing disk. Lin Xuan placed sein hand on it.
+Der weißgekleidete Schüler nahm die Prüfungsscheibe. Lin Xuan legte seine Hand darauf.
 
-Kein reaction.
+Keine Reaktion.
 
-Der white-robed disciple sagte: "Keine spiritual roots. Eliminated."
+Der weißgekleidete Schüler sagte: "Keine spirituellen Wurzeln. Eliminiert."
 
-Lin Xuan withdrew sein hand、turned zu leave.
+Lin Xuan zog seine Hand zurück, drehte sich um und ging.
 
-He didn't cry、didn't kneel、didn't beg. He just looked at den white-robed disciple einmal、eyes ice-cold.
+Er weinte nicht, kniete nicht, bettelte nicht. Er blickte den weißgekleideten Schüler nur einmal an, mit eiskalten Augen.
 
-Der white-robed disciple frowned: "You still won't leave?"
+Der weißgekleidete Schüler runzelte die Stirn: "Du gehst noch nicht?"
 
-Lin Xuan didn't answer.
+Lin Xuan antwortete nicht.
 
-He walked ten steps、stopped.
+Er ging zehn Schritte, stoppte.
 
-Looked up at Xuantian Sect's summit. There war die world von cultivators. Beneath sein feet war dirt、die world von mortals.
+Blickte auf zum Gipfel des Xuantian-Sekt. Dort war die Welt der Kultivierer. Unter seinen Füßen war Erde, die Welt der Normalen.
 
-Lin Xuan took out ein black stone von sein chest. Picked it von ein dead person、didn't know what use es had.
+Lin Xuan nahm einen schwarzen Stein aus seinem Gewand. Von einem Toten aufgepickt, wusste nicht, welchen Nutzen er hatte.
 
-He gripped den stone.
+Er umfasste den Stein.
 
-"Keine spiritual roots、cannot cultivate. Dies is die cultivation world's law." Lin Xuan whispered. "If I accept dies law、I am mortal. Mortals die in ein hundred years."
+"Keine spirituellen Wurzeln, kann nicht kultivieren. Das ist das Gesetz der Kultivierungswelt." Lin Xuan flüsterte. "Wenn ich dieses Gesetz akzeptiere, bin ich ein Normaler. Normalen sterben in hundert Jahren."
 
-He laughed.
+Er lachte.
 
-Ein cold laugh.
+Ein kaltes Lachen.
 
-"But I don't accept."
+"Aber ich akzeptiere nicht."
 
-He turned、walked toward den rear mountain's Juebi Peak.
+Er drehte sich, ging zum Juebi Peak des hinteren Berges.
 
-Juebi Peak war forbidden territory. Legend sagte many died there.
+Juebi Peak war verbotenes Territorium. Legenden sagten, viele starben dort.
 
-Lin Xuan walked zu Juebi Peak's edge. Below war ein abyss、couldn't see den bottom.
+Lin Xuan ging zum Rand des Juebi Peak. Darunter war ein Abgrund, konnte den Boden nicht sehen.
 
-"Those ohne spiritual roots can nur fate akzeptieren. Accepting fate is following. Those who follow laws die." Lin Xuan gripped den black stone tighter. "I won't follow. I will reverse."
+"Wer keine spirituellen Wurzeln hat, kann nur das Schicksal akzeptieren. Akzeptieren ist Folgen. Wer den Gesetzen folgt, stirbt." Lin Xuan umfasste den schwarzen Stein stärker. "Ich werde nicht folgen. Ich werde umkehren."
 
-He looked at den abyss.
+Er blickte in den Abgrund.
 
-"Those who reverse laws might die faster. But at least I tried."
+"Wer die Gesetze umkehrt, might schneller sterben. Aber至少 ich habe versucht."
 
-He jumped down.
+Er sprang.
 
-Wind whistled. Lin Xuan plummeted.
+Wind heulte. Lin Xuan fiel rasch.
 
-Just about zu crash into den ground、der black stone in sein hand vibrated.
+Gerade als er auf den Boden krachen würde, vibrierte der schwarzen Stein in seiner Hand.
 
-Ein ice-cold Kraft surged out、rushed into Lin Xuan's body.
+Eine eisige Kraft strömte aus, schoss in Lin Xuans Körper.
 
-Meridians severe pain.
+Meridiane schmerzten intensiv.
 
-That Kraft forcibly rushed through blocked meridians.
+Die Kraft durchbrach die blockierten Meridiane.
 
-Lin Xuan grit sein teeth、didn't scream.
+Lin Xuan presste die Zähne, schrie nicht.
 
-He knew dies war opportunity. Mortals ohne spiritual roots had blocked meridians. But dies Kraft war forcibly opening them.
+Er wusste, das war eine Gelegenheit. Normalen ohne spirituelle Wurzeln haben blockierte Meridiane. Aber diese Kraft öffnete sie gewaltsam.
 
-Der pain lasted ein lange time.
+Der Schmerz dauerte lange.
 
-Lin Xuan felt he war about zu die. But he didn't let go.
+Lin Xuan fühlte, er würde sterben. Aber er ließ nicht los.
 
-Finally、he landed auf einem platform.
+Endlich landete er auf einer Platform.
 
-Das platform's surroundings waren carved full von runes、emitting blue light.
+Die Platform war ringsum mit Runen carved, strahlte blaues Licht.
 
-At den center war ein stone tablet. Auf dem tablet war written:
+In der Mitte war eine Steintafel. Auf der Tafel stand:
 
-"Dies stone is named Reverse Mortal Pearl. Those who obtain dies pearl can reverse die cultivation world's laws、forcibly cultivating mit ein mortal body. Cost: lifetime tribulations、nine deaths für ein life. If successful、can transcend laws、achieve true immortal."
+"Dieser Stein heißt Reverse Mortal Pearl. Wer diesen Pearl erhält, kann die Gesetze der Kultivierungswelt umkehren, mit einem normalen Körper gewaltsam kultivieren. Kosten: ein Leben voller Prüfungen, neun Tode für ein Leben. Bei Erfolg, transzendiert die Gesetze, erreicht den wahren Unsterblichen."
 
-Lin Xuan looked at den stone tablet.
+Lin Xuan blickte auf die Steintafel.
 
-Der black stone's shell fell off、revealing ein gray pearl. Auf dem pearl war carved ein human figure、standing auf einem shattered road、der road extended toward den sky.
+Die schwarze Steins Hülle fiel ab, revealed einen grauen Pearl. Auf dem Pearl war eine menschliche Figur carved, stand auf einer shattered Straße, die Straße streckte zum Himmel.
 
-Lin Xuan gripped den pearl、felt die surging Kraft.
+Lin Xuan umfasste den Pearl, fühlte die strömende Kraft.
 
-In sein meridians、ein weak stream von qi began zu flow.
+In seinen Meridiane begann ein schwacher Qi-Strom zu fließen.
 
-That war spiritual qi.
+Das war spirituelle Qi.
 
-Lin Xuan closed sein eyes zu feel.
+Lin Xuan schloss die Augen um zu fühlen.
 
-Very weak、but es definitely existed.
+Sehr schwach, aber existierte definitiv.
 
-He could finally cultivate.
+Er konnte endlich kultivieren.
 
-Der cost war "lifetime tribulations、nine deaths für ein life."
+Die Kosten waren "ein Leben voller Prüfungen, neun Tode für ein Leben."
 
-Lin Xuan war silent für ein lange time.
+Lin Xuan war lange still.
 
-Then he laughed.
+Dann lachte er.
 
-Ein cold laugh.
+Ein kaltes Lachen.
 
-"I、Lin Xuan、have nothing. Even wenn nine deaths für ein life、es ist better than dying silently in ein hundred years."
+"Ich, Lin Xuan, habe nichts. Selbst wenn neun Tode für ein Leben, ist es besser als in hundert Jahren still zu sterben."
 
-He gripped den Reverse Mortal Pearl tighter.
+Er umfasste das Reverse Mortal Pearl stärker.
 
-"Die cultivation world's laws say those ohne spiritual roots can nur fate akzeptieren. I don't accept. I will reverse dies law."
+"Die Gesetze der Kultivierungswelt sagen, wer keine spirituellen Wurzeln hat, kann nur das Schicksal akzeptieren. Ich akzeptiere nicht. Ich werde dieses Gesetz umkehren."
 
 ---
 
-**Next Kapitel Preview:** Lin Xuan forcibly enters Xuantian Sect、begins reverse-law cultivation. Die sect's cruelty is far more terrifying als he imagined.
+**Nächstes Kapitel Preview:** Lin Xuan tritt gewaltsam in den Xuantian-Sekt ein, beginnt umkehrgesetz Kultivierung. Die Grausamkeit des Sekt ist weit mehr terrifying als er imaginierte.
