@@ -5,12 +5,22 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const navLinks = [
-  { href: lang === defaultLang ? '/webkl/' : `/webkl/${lang}/`, label: t.home },
-  { href: lang === defaultLang ? '/webkl/blog/' : `/webkl/${lang}/blog/`, label: t.blog },
-  { href: lang === defaultLang ? `/webkl/category/${t.novelCategory}/` : `/webkl/${lang}/category/${t.novelCategory}/`, label: t.novel },
-  { href: lang === defaultLang ? '/webkl/news/' : `/webkl/${lang}/news/`, label: t.news },
-  { href: lang === defaultLang ? '/webkl/about/' : `/webkl/${lang}/about/`, label: t.about },
+  { href: '/webkl/', label: t.home },
+  { href: '/webkl/blog/', label: t.blog },
+  { href: `/webkl/category/${t.novelCategory}/`, label: t.novel },
+  { href: '/webkl/news/', label: t.news },
+  { href: '/webkl/about/', label: t.about },
 ];
+
+const langNavLinks = [
+  { href: `/webkl/${lang}/`, label: t.home },
+  { href: `/webkl/${lang}/blog/`, label: t.blog },
+  { href: `/webkl/${lang}/category/${t.novelCategory}/`, label: t.novel },
+  { href: `/webkl/${lang}/news/`, label: t.news },
+  { href: `/webkl/${lang}/about/`, label: t.about },
+];
+
+const currentNavLinks = lang === defaultLang ? navLinks : langNavLinks;
 ---
 
 <header class="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
@@ -22,7 +32,7 @@ const navLinks = [
 
     <div class="flex items-center gap-2">
       <div class="hidden md:flex items-center gap-1">
-        {navLinks.map(link => (
+        {currentNavLinks.map(link => (
           <a
             href={link.href}
             class:list={[
@@ -70,7 +80,7 @@ const navLinks = [
 
   <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
     <ul class="px-4 py-2 space-y-1">
-      {navLinks.map(link => (
+      {currentNavLinks.map(link => (
         <li>
           <a href={link.href} class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">
             {link.label}
