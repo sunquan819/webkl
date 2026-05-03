@@ -5,7 +5,7 @@ pubDate: 2026-05-03
 category: "News"
 tags: ["Iran", "Germany", "US military", "Buffett", "global events"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1504711434969-e3388616f652?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1453847668862-487637052f8a?w=800&h=400&fit=crop"
 ---
 
 May 3, 2026 marked several significant global developments across geopolitics, business, and technology.

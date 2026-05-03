@@ -5,7 +5,7 @@ pubDate: 2026-05-03
 category: "新闻"
 tags: ["伊朗", "德国", "美军", "巴菲特", "全球大事"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1504711434969-e3388616f652?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1453847668862-487637052f8a?w=800&h=400&fit=crop"
 ---
 
 2026年5月3日，全球在政治、商业和科技领域发生了几项重大事件。
