@@ -5,7 +5,7 @@ import { url } from '../../../utils/url';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const newsEntries = await getCollection('news-de');
+  const newsEntries = await getCollection('news-en');
   return newsEntries.map(entry => ({
     params: { date: entry.data.date },
     props: { entry },
@@ -19,22 +19,22 @@ const newsItems = entry.body.split('\n').filter(line => line.trim() && line.incl
 
 // Calculate stats
 const totalItems = newsItems.length;
-const categories = ['Politik', 'Wirtschaft', 'Tech', 'Sport', 'Kultur', 'Gesellschaft'];
+const categories = ['Politics', 'Economy', 'Tech', 'Sports', 'Culture', 'Society'];
 
 // Get prev/next dates
-const allDates = (await getCollection('news-de')).map(e => e.data.date).sort().reverse();
+const allDates = (await getCollection('news-en')).map(e => e.data.date).sort().reverse();
 const currentIndex = allDates.indexOf(entry.data.date);
 const prevDate = currentIndex > 0 ? allDates[currentIndex - 1] : null;
 const nextDate = currentIndex < allDates.length - 1 ? allDates[currentIndex + 1] : null;
 ---
 
 <BaseLayout
-  title={`Weltereignisse am ${entry.data.date}`}
-  description={`Wichtige Weltereignisse am ${entry.data.date} - ${totalItems} Nachrichten`}
+  title={`Global Events on ${entry.data.date}`}
+  description={`Major global events summary for ${entry.data.date} - ${totalItems} news items`}
 >
   <Breadcrumb items={[
-    { label: 'Startseite', href: '/webkl/de/' },
-    { label: 'Tägliche Nachrichten', href: '/webkl/de/news/' },
+    { label: 'Home', href: '/webkl/en/' },
+    { label: 'Daily News', href: '/webkl/en/news/' },
     { label: entry.data.date, href: Astro.url.pathname },
   ]} />
 
@@ -44,20 +44,20 @@ const nextDate = currentIndex < allDates.length - 1 ? allDates[currentIndex + 1]
       <div class="flex items-center justify-between mb-6">
         <div>
           <h1 class="text-4xl font-bold text-gray-900 mb-2">
-            Weltereignisse am {entry.data.date}
+            Global Events on {entry.data.date}
           </h1>
           <p class="text-gray-500">
-            <span class="text-primary font-semibold">{totalItems}</span> wichtige Nachrichten
+            <span class="text-primary font-semibold">{totalItems}</span> major news items
           </p>
         </div>
         <div class="flex gap-2">
           {prevDate && (
-            <a href={`/webkl/de/news/${prevDate}/`} class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors text-sm">
+            <a href={`/webkl/en/news/${prevDate}/`} class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors text-sm">
               ← {prevDate}
             </a>
           )}
           {nextDate && (
-            <a href={`/webkl/de/news/${nextDate}/`} class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors text-sm">
+            <a href={`/webkl/en/news/${nextDate}/`} class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors text-sm">
               {nextDate} →
             </a>
           )}
@@ -70,12 +70,12 @@ const nextDate = currentIndex < allDates.length - 1 ? allDates[currentIndex + 1]
           {categories.map(cat => (
             <div class="text-center">
               <div class="text-2xl mb-1">
-                {cat === 'Politik' && '🏛️'}
-                {cat === 'Wirtschaft' && '💰'}
+                {cat === 'Politics' && '🏛️'}
+                {cat === 'Economy' && '💰'}
                 {cat === 'Tech' && '🔬'}
-                {cat === 'Sport' && '⚽'}
-                {cat === 'Kultur' && '🎭'}
-                {cat === 'Gesellschaft' && '👥'}
+                {cat === 'Sports' && '⚽'}
+                {cat === 'Culture' && '🎭'}
+                {cat === 'Society' && '👥'}
               </div>
               <div class="text-xs text-gray-600">{cat}</div>
             </div>
@@ -90,7 +90,7 @@ const nextDate = currentIndex < allDates.length - 1 ? allDates[currentIndex + 1]
         const match = item.match(/\*\*(.+?)\*\*/);
         const title = match ? match[1] : '';
         const sourceMatch = title.match(/- (.+)$/);
-        const source = sourceMatch ? sourceMatch[1] : 'Verschiedene';
+        const source = sourceMatch ? sourceMatch[1] : 'Various';
         const cleanTitle = title.replace(/- .+$/, '').trim();
         
         return (
@@ -127,11 +127,11 @@ const nextDate = currentIndex < allDates.length - 1 ? allDates[currentIndex + 1]
     <footer class="mt-12 pt-8 border-t border-gray-200">
       <div class="flex items-center justify-between">
         <div class="text-gray-500 text-sm">
-          Quelle: Google News RSS
+          Source: Google News RSS
         </div>
         <div class="flex gap-3">
-          <a href="/webkl/de/news/" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition-colors font-medium">
-            Mehr Dates anzeigen
+          <a href="/webkl/en/news/" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition-colors font-medium">
+            View More Dates
           </a>
         </div>
       </div>
