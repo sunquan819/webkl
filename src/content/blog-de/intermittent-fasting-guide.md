@@ -5,7 +5,7 @@ pubDate: 2026-05-04
 category: "Gesundheit"
 tags: ["intermittent fasting", "weight loss method", "healthy eating", "time management"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1490645935967-10de6ba43199?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop"
 ---
 
 ## Intermittent Fasting Guide: Three Methods Explained

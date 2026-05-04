@@ -5,7 +5,7 @@ pubDate: 2026-05-04
 category: "健康養生"
 tags: ["间歇性禁食", "减肥方法", "健康饮食", "時間管理"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1490645935967-10de6ba43199?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop"
 ---
 
 ## 间歇性禁食ガイド：三つの方法详解
