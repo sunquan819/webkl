@@ -42,18 +42,39 @@ heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=40
 ### 電力公司
 
 **NextEra Energy（NEE）**
-- 美國最大清潔能源
-- Google、Microsoft數據中心供電
-- PE 25倍，配置10%
+- 美國最大電力公司
+- 核電+天然氣組合供電
+- PE 25倍，配置8%
 
 **Duke Energy（DUK）**
 - 美國東南部電力
 - 股息率4%
-- PE 18倍，配置5%
+- PE 18倍，配置4%
 
 **Vertiv Holdings（VRT）**
 - 數據中心電力基建
-- PE 35倍，配置5%
+- PE 35倍，配置4%
+
+### 核電AI數據中心供電
+
+**NuScale Power（SMR）**
+- 小型模組化核反應堆（SMR）領先者
+- Microsoft數據中心核電合同
+- 2026年股價飆升17%
+- **配置5%**
+
+**Centrus Energy（LEU）**
+- 核燃料供應商
+- PE 20倍，配置4%
+
+**Energy Fuels（UUUU）**
+- 鈾礦開採公司
+- PE 15倍，配置4%
+
+**核電為何適合AI數據中心？**
+- 核電24小時穩定供電
+- 零碳排放
+- SMR建設週期2-3年
 
 ---
 
@@ -63,8 +84,22 @@ heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=40
 |------|------|----|----|
 | Microsoft | MSFT | 30 | 20% |
 | NVIDIA | NVDA | 65 | 20% |
-| NextEra | NEE | 25 | 10% |
-| Duke | DUK | 18 | 5% |
-| Vertiv | VRT | 35 | 5% |
+| NuScale Power | SMR | - | 5% |
+| NextEra | NEE | 25 | 8% |
+| Google | GOOGL | 22 | 5% |
+| AMD | AMD | 45 | 10% |
+| Meta | META | 18 | 5% |
+| Centrus Energy | LEU | 20 | 4% |
+| Energy Fuels | UUUU | 15 | 4% |
+| Duke | DUK | 18 | 4% |
+| Vertiv | VRT | 35 | 4% |
+| Adobe | ADBE | 25 | 5% |
+| Salesforce | CRM | 30 | 5% |
 
-**配置：基礎50% + 能源20% + 技術7% + 應用15%**
+**配置：基礎50% + 能源25%（電力12%+核電13%） + 技術5% + 應用10%**
+
+**新增核電原因：**
+- AI數據中心需要穩定清潔能源
+- 核電24小時穩定供電，零碳排放
+- SMR建設週期2-3年
+- NuScale、Oklo核電股2026年飆升

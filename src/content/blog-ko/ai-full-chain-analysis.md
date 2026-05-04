@@ -33,15 +33,48 @@ heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=40
 
 ## 第二層：能源層
 
-**NextEra Energy（NEE）** - PE 25倍
-**Duke Energy（DUK）** - PE 18倍
-**Vertiv（VRT）** - PE 35倍
+### AI數據中心耗電
+
+- 單個數據中心100-500MW
+- NVIDIA H100單卡700W
+- 全球AI用電佔全球2%
+
+### 電力公司
+
+**NextEra Energy（NEE）** - PE 25倍，配置8%
+**Duke Energy（DUK）** - PE 18倍，配置4%
+**Vertiv（VRT）** - PE 35倍，配置4%
+
+### 核電AI數據中心供電
+
+**NuScale Power（SMR）**
+- 小型模組化核反應堆（SMR）
+- 2026年股價飆升17%
+- **配置5%**
+
+**Centrus Energy（LEU）** - 核燃料，PE 20倍，配置4%
+**Energy Fuels（UUUU）** - 鈾礦，PE 15倍，配置4%
+
+**核電優勢：**
+- 24小時穩定供電
+- 零碳排放
+- SMR建設週期2-3年
 
 ---
 
 ## 投資配置
 
-- 基礎50%
-- 能源20%
-- 技術7%
-- 應用15%
+| 公司 | 代碼 | 層級 | PE | 配置 |
+|------|------|------|----|----|
+| Microsoft | MSFT | 基礎 | 30 | 20% |
+| NVIDIA | NVDA | 基礎 | 65 | 20% |
+| NuScale | SMR | 核電 | - | 5% |
+| NextEra | NEE | 能源 | 25 | 8% |
+| Google | GOOGL | 基礎 | 22 | 5% |
+| AMD | AMD | 基礎 | 45 | 10% |
+| Centrus | LEU | 核燃料 | 20 | 4% |
+| Energy Fuels | UUUU | 鈾礦 | 15 | 4% |
+| Duke | DUK | 能源 | 18 | 4% |
+| Vertiv | VRT | 能源基建 | 35 | 4% |
+
+**配置：基礎50% + 能源25%（電力12%+核電13%） + 技術5% + 應用10%**
