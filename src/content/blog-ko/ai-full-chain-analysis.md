@@ -1,61 +1,47 @@
 ---
-title: "AI全鏈路解析：從芯片到應用，完整產業鏈與投資標的梳理"
-description: "AI產業全鏈路分析：基礎層芯片公司（NVIDIA、AMD）、技術層算法框架（OpenAI、Google）、應用層產品服務（Microsoft、Adobe）、數據層服務商。"
+title: "AI全鏈路解析：從芯片到應用"
+description: "AI產業五層鏈路：基礎層芯片、能源層電力、技術層算法、應用層產品、數據層服務。核心公司股票代碼。"
 pubDate: 2026-05-04
 category: "財經投資"
-tags: ["AI產業", "產業鏈分析", "股票投資", "科技股"]
+tags: ["AI產業", "產業鏈分析"]
 author: "LifeTips"
 heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop"
 ---
 
-## AI全鏈路解析：完整產業鏈與投資標的
-
-AI產業不是單一環節，而是完整鏈路。
+## AI全鏈路解析
 
 ---
 
-## AI產業鏈結構
+## 五層結構
 
-**四層結構：**
-
-1. **基礎層**：芯片、硬件
-2. **技術層**：算法、模型
-3. **應用層**：產品、服務
-4. **數據層**：數據服務
+1. **基礎層**：芯片
+2. **能源層**：電力
+3. **技術層**：算法
+4. **應用層**：產品
+5. **數據層**：數據
 
 ---
 
 ## 第一層：基礎層
 
-**NVIDIA（NVDA）**
-- GPU市佔90%
-- 2026年PE 65倍
-
-**AMD（AMD）**
-- GPU市佔10%
-- 2026年PE 45倍
-
-**Microsoft（MSFT）**
-- 云市佔23%
-- 2026年PE 30倍
-
-**Google（GOOGL）**
-- 云市佔10%
-- 2026年PE 22倍
+**NVIDIA（NVDA）** - PE 65倍
+**AMD（AMD）** - PE 45倍
+**Microsoft（MSFT）** - PE 30倍
+**Google（GOOGL）** - PE 22倍
 
 ---
 
-## 投資策略
+## 第二層：能源層
 
-**推薦配置：**
-
-| 公司 | 代碼 | PE | 配置 |
-|------|------|----|----|
-| Microsoft | MSFT | 30 | 20% |
-| NVIDIA | NVDA | 65 | 20% |
-| Google | GOOGL | 22 | 15% |
+**NextEra Energy（NEE）** - PE 25倍
+**Duke Energy（DUK）** - PE 18倍
+**Vertiv（VRT）** - PE 35倍
 
 ---
 
-**數據來源：**
-2026年Q1財報數據
+## 投資配置
+
+- 基礎50%
+- 能源20%
+- 技術7%
+- 應用15%

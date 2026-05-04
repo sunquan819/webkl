@@ -1,61 +1,47 @@
 ---
-title: "AI Full Chain Analysis: From Chips to Applications, Complete Industry Chain & Investment Targets"
-description: "AI industry full chain analysis: Foundation layer chip companies (NVIDIA, AMD), Technology layer algorithms (OpenAI, Google), Application layer products (Microsoft, Adobe), Data layer services. Each layer core companies, stock codes, investment logic."
+title: "AI Full Chain Analysis: From Chips to Applications"
+description: "AI industry five layers: Foundation chips, Energy power, Technology algorithms, Application products, Data services. Core companies stock codes."
 pubDate: 2026-05-04
 category: "Finance"
-tags: ["AI industry", "chain analysis", "stock investment", "tech stocks"]
+tags: ["AI industry", "chain analysis"]
 author: "LifeTips"
 heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop"
 ---
 
-## AI Full Chain Analysis: Complete Industry Chain
-
-AI industry isn't single link, it's complete chain.
+## AI Full Chain Analysis
 
 ---
 
-## AI Industry Chain Structure
+## Five Layers
 
-**Four Layers:**
-
-1. **Foundation**: Chips, hardware
-2. **Technology**: Algorithms, models
-3. **Application**: Products, services
-4. **Data**: Data services
+1. **Foundation**: Chips
+2. **Energy**: Power
+3. **Technology**: Algorithms
+4. **Application**: Products
+5. **Data**: Services
 
 ---
 
 ## Layer 1: Foundation
 
-**NVIDIA (NVDA)**
-- GPU market share 90%
-- 2026 PE 65x
-
-**AMD (AMD)**
-- GPU market share 10%
-- 2026 PE 45x
-
-**Microsoft (MSFT)**
-- Cloud share 23%
-- 2026 PE 30x
-
-**Google (GOOGL)**
-- Cloud share 10%
-- 2026 PE 22x
+**NVIDIA (NVDA)** - PE 65x
+**AMD (AMD)** - PE 45x
+**Microsoft (MSFT)** - PE 30x
+**Google (GOOGL)** - PE 22x
 
 ---
 
-## Investment Strategy
+## Layer 2: Energy
 
-**Recommended:**
-
-| Company | Code | PE | Allocation |
-|---------|------|----|-----------|
-| Microsoft | MSFT | 30 | 20% |
-| NVIDIA | NVDA | 65 | 20% |
-| Google | GOOGL | 22 | 15% |
+**NextEra Energy (NEE)** - PE 25x
+**Duke Energy (DUK)** - PE 18x
+**Vertiv (VRT)** - PE 35x
 
 ---
 
-**Data Sources:**
-2026 Q1 financial data
+## Investment Allocation
+
+- Foundation 50%
+- Energy 20%
+- Technology 7%
+- Application 15%
