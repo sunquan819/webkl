@@ -5,7 +5,7 @@ pubDate: 2026-05-06
 category: "Romanfortsetzung"
 tags: ["Kultivierung", "Die Chroniken des Umkehrsterblichen", "Fantasy"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1518837695005-72bf35828938?w=800&h=400&fit=crop"
 type: "novel"
 series: "Die Chroniken des Umkehrsterblichen"
 chapter: 4
