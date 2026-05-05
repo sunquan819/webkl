@@ -14,13 +14,6 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 
-// 解析新闻内容，提取标题和链接
-const newsItems = entry.body.split('\n').filter(line => line.trim() && line.includes('**'));
-
-// 计算统计信息
-const totalItems = newsItems.length;
-const categories = ['政治', '经济', '科技', '体育', '文化', '社会'];
-
 // 获取前后日期链接
 const allDates = (await getCollection('news-zh')).map(e => e.data.date).sort().reverse();
 const currentIndex = allDates.indexOf(entry.data.date);
@@ -30,7 +23,7 @@ const nextDate = currentIndex < allDates.length - 1 ? allDates[currentIndex + 1]
 
 <BaseLayout
   title={`${entry.data.date} 全球大事`}
-  description={`${entry.data.date}全球重要新闻事件汇总，共${totalItems}条新闻`}
+  description={`${entry.data.date}全球重要新闻事件汇总`}
 >
   <Breadcrumb items={[
     { label: '首页', href: '/webkl/zh/' },
@@ -47,7 +40,7 @@ const nextDate = currentIndex < allDates.length - 1 ? allDates[currentIndex + 1]
             {entry.data.date} 全球大事
           </h1>
           <p class="text-gray-500">
-            共 <span class="text-primary font-semibold">{totalItems}</span> 条重要新闻
+            全球重要新闻事件汇总
           </p>
         </div>
         <div class="flex gap-2">
@@ -64,64 +57,20 @@ const nextDate = currentIndex < allDates.length - 1 ? allDates[currentIndex + 1]
         </div>
       </div>
 
-      <!-- Stats -->
-      <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 mb-8">
-        <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
-          {categories.map(cat => (
-            <div class="text-center">
-              <div class="text-2xl mb-1">
-                {cat === '政治' && '🏛️'}
-                {cat === '经济' && '💰'}
-                {cat === '科技' && '🔬'}
-                {cat === '体育' && '⚽'}
-                {cat === '文化' && '🎭'}
-                {cat === '社会' && '👥'}
-              </div>
-              <div class="text-xs text-gray-600">{cat}</div>
-            </div>
-          ))}
-        </div>
+      <!-- News Content -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+      <div class="prose prose-lg max-w-none">
+        {entry.body.split('\n').map(line => {
+          if (line.startsWith('## ')) {
+            return <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">{line.replace('## ', '')}</h2>;
+          } else if (line.startsWith('### ')) {
+            return <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">{line.replace('### ', '')}</h3>;
+          } else if (line.trim() && !line.startsWith('---')) {
+            return <p class="text-gray-700 mb-3 leading-relaxed">{line}</p>;
+          }
+          return null;
+        })}
       </div>
-    </header>
-
-    <!-- News List -->
-    <div class="space-y-6">
-      {newsItems.map((item, index) => {
-        // 解析新闻标题
-        const match = item.match(/\*\*(.+?)\*\*/);
-        const title = match ? match[1] : '';
-        const sourceMatch = title.match(/- (.+)$/);
-        const source = sourceMatch ? sourceMatch[1] : '综合';
-        const cleanTitle = title.replace(/- .+$/, '').trim();
-        
-        return (
-          <article class="bg-white rounded-lg border border-gray-100 hover:shadow-md transition-all duration-300 overflow-hidden">
-            <div class="p-6">
-              <div class="flex items-start gap-4">
-                <div class="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">
-                  {index + 1}
-                </div>
-                <div class="flex-1">
-                  <h3 class="text-lg font-semibold text-gray-900 mb-2 hover:text-primary transition-colors">
-                    {cleanTitle}
-                  </h3>
-                  <div class="flex items-center gap-3 text-sm text-gray-500">
-                    <span class="flex items-center gap-1">
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 01-2-2V7a2 2 0 012-2m2 13a2 2 0 01-2-2V9a2 2 0 012-2"/>
-                      </svg>
-                      {source}
-                    </span>
-                    <span class="px-2 py-1 bg-gray-100 rounded text-xs">
-                      {entry.data.date}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-        );
-      })}
     </div>
 
     <!-- Footer -->
