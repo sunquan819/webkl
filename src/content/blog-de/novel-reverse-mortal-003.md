@@ -5,7 +5,7 @@ pubDate: 2026-05-05
 category: "Romanserie"
 tags: ["Kultivierung", "Reverse Mortal", "Fantasy"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1478131143081-80db716184b4?w=800&h=400&fit=crop"
+heroImage: "https://picsum.photos/800/400.jpg"
 type: "novel"
 series: "Reverse Mortal Chronicles"
 chapter: 3

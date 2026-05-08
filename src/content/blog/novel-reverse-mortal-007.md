@@ -5,7 +5,7 @@ pubDate: 2026-05-09
 category: "小说连载"
 tags: ["修仙", "逆凡传", "玄幻"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1494500764479-0c8f4909d3b7?w=800&h=400&fit=crop"
+heroImage: "https://picsum.photos/800/400.jpg"
 type: "novel"
 series: "逆凡传"
 chapter: 7

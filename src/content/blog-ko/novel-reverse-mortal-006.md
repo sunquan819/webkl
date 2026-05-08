@@ -5,7 +5,7 @@ pubDate: 2026-05-08
 category: "소설 연재"
 tags: ["수선", "역범전", "현환"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df5?w=800&h=400&fit=crop"
+heroImage: "https://picsum.photos/800/400.jpg"
 type: "novel"
 series: "역범전"
 chapter: 6
