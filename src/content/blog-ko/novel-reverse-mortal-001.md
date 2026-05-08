@@ -5,7 +5,7 @@ pubDate: 2026-05-03
 category: "소설 연재"
 tags: ["수련", "역범전", "玄幻"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop"
 type: "novel"
 series: "역범전"
 chapter: 1

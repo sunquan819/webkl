@@ -5,7 +5,7 @@ pubDate: 2026-05-04
 category: "Novel Series"
 tags: ["cultivation", "Reverse Mortal Chronicle", "fantasy"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1486873483715-4c6d5d0f9d19?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1507003211169-0a18dd714824?w=800&h=400&fit=crop"
 type: "novel"
 series: "Reverse Mortal Chronicle"
 chapter: 2

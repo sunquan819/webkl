@@ -5,7 +5,7 @@ pubDate: 2026-05-07
 category: "소설 연재"
 tags: ["수선", "역범전", "판타지"]
 author: "LifeTips"
-heroImage: "https://images.unsplash.com/photo-1515377905703-44021060e24d?w=800&h=400&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&h=400&fit=crop"
 type: "novel"
 series: "역범전"
 chapter: 5
